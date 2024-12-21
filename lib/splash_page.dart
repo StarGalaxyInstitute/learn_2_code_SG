@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'dart:async';
 
@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learn_to_code/App_flow/app_flowset_page.dart';
 import 'package:learn_to_code/App_flow/intro_page.dart';
+import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/preferences.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Parents_App/Screens/parents_homepage.dart';
@@ -28,8 +29,6 @@ class _SplashPageState extends State<SplashPage> {
       () async {
         var isIntroductionScreenLoaded = await Preference.preference.getBool(
             key: PrefernceKey.isIntroductionScreenLoaded, defVal: false);
-        var isUserVerify = await Preference.preference
-            .getBool(key: PrefernceKey.isUserVerify, defVal: false);
         var isStudentFlow = await Preference.preference
             .getBool(key: PrefernceKey.isStudentFlow, defVal: false);
         var isStaffFlow = await Preference.preference
@@ -72,14 +71,11 @@ class _SplashPageState extends State<SplashPage> {
               ),
             ),
             SizedBox(height: 10),
-            Text(
-              "Star Galaxy\nInstitute",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.rubik(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+            CommonWidgets().textWidget(
+                text: "Star Galaxy\nInstitute",
+                textSize: 20.0,
+                textWeight: FontWeight.w500,
+                textAlign: TextAlign.center)
           ],
         ),
       ),

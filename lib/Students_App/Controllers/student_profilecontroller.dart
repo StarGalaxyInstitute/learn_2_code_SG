@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 
-class StudentHomecontroller extends GetxController {
+class StudentProfilecontroller extends GetxController {
   RxBool isLoader = false.obs;
 
   @override
