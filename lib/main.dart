@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      
       theme: ThemeData(
         brightness: MediaQuery.of(context).platformBrightness,
       ),
