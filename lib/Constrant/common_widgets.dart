@@ -48,11 +48,13 @@ class CommonWidgets {
     );
   }
 
-  Widget textFieldBox({labelText, fieldIcon, keyboardType, passwordText}) {
+  Widget textFieldBox({labelText, fieldIcon, keyboardType, passwordText, validation,controller }) {
     return TextFormField(
       style: GoogleFonts.rubik(
         fontSize: 18,
       ),
+      controller: controller,
+      validator: validation,
       obscureText: passwordText,
       keyboardType: keyboardType,
       decoration: InputDecoration(

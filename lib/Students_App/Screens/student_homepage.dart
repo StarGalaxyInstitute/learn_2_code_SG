@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_homecontroller.dart';
+import 'student_filtertutor_screen.dart';
 
 class StudentHomepage extends StatelessWidget {
   StudentHomecontroller _studentHomecontroller =
@@ -60,7 +61,7 @@ class StudentHomepage extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     // onTap: () {
-                                    //   Get.to(() => SubjectDetailsPage());
+                                    //   Get.to(() => FilterScreen());
                                     // },
                                     child: liveTutorWidget(
                                         subjectName: "Flutter",
@@ -186,22 +187,44 @@ class StudentHomepage extends StatelessWidget {
 
   Widget searchWidget() {
     return Container(
-      width: Get.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppColors.greycolor),
-      ),
-      child: TextFormField(
-        keyboardType: TextInputType.streetAddress,
-        textAlignVertical: TextAlignVertical.center,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: "Search",
-          hintStyle: GoogleFonts.abyssinicaSil(),
-          prefixIcon: Icon(Icons.search),
+        height: 50,
+        width: Get.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(color: AppColors.greycolor),
         ),
-      ),
-    );
+        child: Row(
+          children: [
+            Expanded(
+              flex: 4,
+              child: TextFormField(
+                keyboardType: TextInputType.streetAddress,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Search",
+                  hintStyle: GoogleFonts.abyssinicaSil(),
+                  prefixIcon: Icon(Icons.search),
+                ),
+              ),
+            ),
+            Container(
+              width: 1,
+              color: AppColors.greycolor,
+              height: 50,
+            ),
+            Expanded(
+                child: GestureDetector(
+              onTap: () {
+                Get.to(() => StudentFiltertutorScreen());
+              },
+              child: Icon(
+                Icons.filter_list_sharp,
+                color: AppColors.blackcolor,
+              ),
+            )),
+          ],
+        ));
   }
 
   Widget liveTutorWidget({subjectName, subjectLessons}) {

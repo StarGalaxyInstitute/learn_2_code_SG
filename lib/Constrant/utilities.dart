@@ -9,6 +9,8 @@ class AppColors {
   static Color darkBlue = Color(0xff0F3460);
   static Color softBlue = Color(0xff0F80CC);
   static Color btnBlue = Color(0xff2584F4);
+    static Color btnBluelight = Color.fromARGB(255, 220, 239, 255);
+
 }
 
 class PrefernceKey {
