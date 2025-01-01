@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../Constrant/utilities.dart';
 import '../Controllers/student_filtercoures_resultcontroller.dart';
 import '../Helpers/student_coures.dart';
 
@@ -11,32 +13,17 @@ class StudentFiltercouresresult extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filtered Results'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.filter_alt),
-            onPressed: () {
-              // Handle filter logic
-            },
-          ),
-        ],
+        title: Text(
+          'Filtered Results',
+          style: GoogleFonts.lato(
+              textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+        ),
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search a course...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onChanged: (value) {
-                // Add search functionality
-              },
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: searchWidget(),
           ),
           Expanded(
             child: Obx(
@@ -55,6 +42,48 @@ class StudentFiltercouresresult extends StatelessWidget {
   }
 }
 
+Widget searchWidget() {
+  return Container(
+      height: 50,
+      width: Get.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: AppColors.btnborder),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextFormField(
+              keyboardType: TextInputType.streetAddress,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Search",
+                hintStyle: GoogleFonts.abyssinicaSil(),
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+          ),
+          Spacer(),
+          Container(
+            width: 1,
+            color: AppColors.btnborder,
+            height: 50,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.filter_list, color: Colors.grey),
+                SizedBox(width: 5),
+                Text('5 Filters', style: TextStyle(color: Colors.grey)),
+              ],
+            ),
+          ),
+        ],
+      ));
+}
+
 class CourseCard extends StatelessWidget {
   final StudentCoures course;
 
@@ -62,15 +91,33 @@ class CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    return Container(
+      height: 130,
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
-          Image.asset(
-            course.image,
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
+          SizedBox(
+            width: 122,
+            height: Get.height,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
+                    child: Image.asset(
+                      course.image,
+                      height: 122,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           SizedBox(width: 10),
           Expanded(
@@ -78,37 +125,76 @@ class CourseCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  overflow: TextOverflow.visible,
                   course.title,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  maxLines: 2,
+                  style: GoogleFonts.lato(
+                      textStyle:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                 ),
-                Text(course.author),
+                SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  course.author,
+                  style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
+                          color: AppColors.greycolor)),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  color: AppColors.btnborder,
+                  height: 1,
+                ),
+                Spacer(),
                 Row(
                   children: [
-                    Text(
-                      course.price,
-                      style: TextStyle(
-                          color: Colors.green, fontWeight: FontWeight.bold),
+                    Row(
+                      children: [
+                        Text(
+                          course.price,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  color: AppColors.blackcolor)),
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          course.originalPrice,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                  color: AppColors.greycolor)),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 5),
-                    Text(
-                      course.originalPrice,
-                      style: TextStyle(
-                        decoration: TextDecoration.lineThrough,
-                        color: Colors.grey,
-                      ),
+                    Spacer(),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Colors.orange, size: 16),
+                        SizedBox(width: 5),
+                        Text(
+                          course.rating,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: AppColors.blackcolor)),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.orange, size: 16),
-                    SizedBox(width: 5),
-                    Text(course.rating),
                   ],
                 ),
                 if (course.tag.isNotEmpty)
                   Container(
-                    margin: EdgeInsets.only(top: 5),
+                    margin: EdgeInsets.only(top: 6),
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                     decoration: BoxDecoration(
                       color: course.tag == 'Top Author'
@@ -118,10 +204,16 @@ class CourseCard extends StatelessWidget {
                     ),
                     child: Text(
                       course.tag,
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: AppColors.blackcolor)),
                     ),
                   ),
+                SizedBox(
+                  height: 3,
+                ),
               ],
             ),
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../../Constrant/utilities.dart';
 import '../Controllers/student_filtertutor_resultcontroller.dart';
 import '../Helpers/student_tutormodel.dart';
 
@@ -11,39 +13,18 @@ class StudentFiltertutorResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
         title: Text('Filtered Results', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.filter_list, color: Colors.grey),
-                SizedBox(width: 5),
-                Text('5 Filters', style: TextStyle(color: Colors.grey)),
-              ],
-            ),
-          ),
-        ],
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search a course...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onChanged: controller.updateSearchQuery,
-            ),
+            padding: const EdgeInsets.all(8.0),
+            child: searchWidget(),
           ),
           Expanded(
             child: Obx(() {
@@ -62,6 +43,48 @@ class StudentFiltertutorResult extends StatelessWidget {
   }
 }
 
+Widget searchWidget() {
+  return Container(
+      height: 50,
+      width: Get.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: AppColors.btnborder),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextFormField(
+              keyboardType: TextInputType.streetAddress,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Search",
+                hintStyle: GoogleFonts.abyssinicaSil(),
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+          ),
+          Spacer(),
+          Container(
+            width: 1,
+            color: AppColors.btnborder,
+            height: 50,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.filter_list, color: Colors.grey),
+                SizedBox(width: 5),
+                Text('5 Filters', style: TextStyle(color: Colors.grey)),
+              ],
+            ),
+          ),
+        ],
+      ));
+}
+
 class TutorCard extends StatelessWidget {
   final StudentTutormodel tutor;
 
@@ -69,18 +92,21 @@ class TutorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(width: 1, color: AppColors.btnborder),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         child: Row(
           children: [
             CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage('assets/profile_placeholder.png'),
+              radius: 25,
+              backgroundImage: AssetImage(
+                tutor.image,
+              ),
             ),
             SizedBox(width: 16),
             Expanded(
@@ -89,25 +115,29 @@ class TutorCard extends StatelessWidget {
                 children: [
                   Text(
                     tutor.name,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
                   ),
+                  SizedBox(width: 6),
                   Text(
                     tutor.university,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
+                    style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: AppColors.greycolor,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13)),
                   ),
+                  SizedBox(width: 6),
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 16),
                       SizedBox(width: 4),
                       Text(
                         '${tutor.rating} (${tutor.reviews})',
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                        style: GoogleFonts.lato(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 12)),
                       ),
                     ],
                   ),
@@ -117,21 +147,20 @@ class TutorCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  '\$${tutor.hourlyRate}/hr',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.purple,
-                  ),
-                ),
+                Text('\$${tutor.hourlyRate}/hr',
+                    style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: AppColors.btnBlue,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15))),
                 Text(
                   '\$${tutor.oldRate}',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                    decoration: TextDecoration.lineThrough,
-                  ),
+                  style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          color: AppColors.greycolor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13)),
                 ),
               ],
             ),

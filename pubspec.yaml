@@ -38,6 +38,7 @@ dependencies:
   get:
   google_fonts:
   shared_preferences:
+  flutter_rating_bar: ^4.0.1
   fluttertoast:
   navbar_router:
   smooth_page_indicator:

@@ -8,6 +8,7 @@ import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_homecontroller.dart';
 import 'student_filtertutor_screen.dart';
+import 'student_livesubject_tutoringlist.dart';
 
 class StudentHomepage extends StatelessWidget {
   StudentHomecontroller _studentHomecontroller =
@@ -40,19 +41,24 @@ class StudentHomepage extends StatelessWidget {
                               children: [
                                 CommonWidgets().textWidget(
                                     text: "Live Subject Tutoring",
-                                    textSize: 16.0,
+                                    textSize: 15.0,
                                     textAlign: TextAlign.center,
-                                    textWeight: FontWeight.w600),
-                                CommonWidgets().textWidget(
-                                    text: "View All>",
-                                    textSize: 12.0,
-                                    textAlign: TextAlign.center,
-                                    textWeight: FontWeight.w500),
+                                    textWeight: FontWeight.bold),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => StudentLiveSubjectTutoringList());
+                                  },
+                                  child: CommonWidgets().textWidget(
+                                      text: "View All >",
+                                      textSize: 11.0,
+                                      textAlign: TextAlign.center,
+                                      textWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                             SizedBox(height: Get.height * 0.01),
                             SizedBox(
-                              height: 70,
+                              height: 80,
                               width: Get.width,
                               child: ListView.builder(
                                 itemCount: 5,
@@ -191,7 +197,7 @@ class StudentHomepage extends StatelessWidget {
         width: Get.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: AppColors.greycolor),
+          border: Border.all(color: AppColors.btnborder),
         ),
         child: Row(
           children: [
@@ -210,7 +216,7 @@ class StudentHomepage extends StatelessWidget {
             ),
             Container(
               width: 1,
-              color: AppColors.greycolor,
+              color: AppColors.btnborder,
               height: 50,
             ),
             Expanded(
@@ -229,18 +235,22 @@ class StudentHomepage extends StatelessWidget {
 
   Widget liveTutorWidget({subjectName, subjectLessons}) {
     return Container(
+      width: 120,
       padding: EdgeInsets.symmetric(horizontal: 10),
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
           color: Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0)
-              .withOpacity(.8),
+              .withOpacity(.5),
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CommonWidgets().textWidget(
-              text: subjectName, textSize: 15.0, textWeight: FontWeight.w600),
+          Icon(
+            Icons.menu_book_rounded,
+            size: 20,
+            color: AppColors.blackcolor,
+          ),
           SizedBox(height: 10),
           CommonWidgets().textWidget(
               text: subjectLessons,

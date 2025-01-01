@@ -21,7 +21,7 @@ class CommonWidgets {
       maxLines: textmaxLine,
       textAlign: textAlign,
       overflow: textoverFlow,
-      style: GoogleFonts.rubik(
+      style: GoogleFonts.lato(
           color: textColor, fontSize: textSize, fontWeight: textWeight),
     );
   }
@@ -48,9 +48,15 @@ class CommonWidgets {
     );
   }
 
-  Widget textFieldBox({labelText, fieldIcon, keyboardType, passwordText, validation,controller }) {
+  Widget textFieldBox(
+      {labelText,
+      fieldIcon,
+      keyboardType,
+      passwordText,
+      validation,
+      controller}) {
     return TextFormField(
-      style: GoogleFonts.rubik(
+      style: GoogleFonts.lato(
         fontSize: 18,
       ),
       controller: controller,
@@ -59,7 +65,7 @@ class CommonWidgets {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: GoogleFonts.rubik(
+        labelStyle: GoogleFonts.lato(
           fontSize: 16,
           fontWeight: FontWeight.bold,
           color: AppColors.darkBlue,
