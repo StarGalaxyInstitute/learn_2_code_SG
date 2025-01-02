@@ -1,21 +1,16 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, must_be_immutable
 
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_to_code/Constrant/common_widgets.dart';
-import 'package:learn_to_code/Constrant/preferences.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
-import 'package:learn_to_code/Students_App/Screens/student_dashboard.dart';
 import 'package:learn_to_code/Students_App/Screens/student_login.dart';
 
 import '../Controllers/student_authcontroller.dart';
 
-
 class StudentRegister extends StatelessWidget {
   StudentRegister({super.key});
-  StudentAuthcontroller _authcontroller =
-      Get.put(StudentAuthcontroller());
+  StudentAuthcontroller _authcontroller = Get.put(StudentAuthcontroller());
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +111,4 @@ class StudentRegister extends StatelessWidget {
       ),
     );
   }
-
-  
 }

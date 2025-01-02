@@ -1,3 +1,5 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_to_code/Students_App/Screens/student_dashboard.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps, use_key_in_widget_constructors, file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';

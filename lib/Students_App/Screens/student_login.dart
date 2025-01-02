@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_to_code/Constrant/common_widgets.dart';
-import 'package:learn_to_code/Constrant/preferences.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
-import 'package:learn_to_code/Students_App/Screens/student_dashboard.dart';
 import 'package:learn_to_code/Students_App/Screens/student_register.dart';
 import '../Controllers/student_authcontroller.dart';
 
@@ -94,6 +92,4 @@ class StudentLogin extends StatelessWidget {
       ),
     );
   }
-
-
 }
