@@ -16,6 +16,55 @@ class StudentRequestNewSubjectScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: AppColors.whitecolor,
+          bottomNavigationBar: Container(
+            margin: EdgeInsets.symmetric(vertical: 13),
+            child: Row(
+              children: [
+                Expanded(
+                    child: GestureDetector(
+                  // onTap: () =>
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10),
+                    height: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        border:
+                            Border.all(width: 1, color: AppColors.btnborder)),
+                    child: Center(
+                      child: Text('Cancel',
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  color: AppColors.greycolor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14))),
+                    ),
+                  ),
+                )),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                    child: GestureDetector(
+                  // onTap: () => ,
+                  child: Container(
+                    margin: EdgeInsets.only(right: 13),
+                    height: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.btnBlue),
+                    child: Center(
+                      child: Text('Request Subject',
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14))),
+                    ),
+                  ),
+                )),
+              ],
+            ),
+          ),
           appBar: AppBar(
             title: Text(
               "Request New Subject",
@@ -40,22 +89,19 @@ class StudentRequestNewSubjectScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  height: 0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: AppColors.btnborder),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      maxLines: 3,
                       style: TextStyle(color: AppColors.blackcolor),
                       keyboardType: TextInputType.streetAddress,
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintMaxLines: 1,
-                        hintText: "Search a tutor....",
+                        hintText: "Search a tutor..",
                         hintStyle: GoogleFonts.abyssinicaSil(fontSize: 12),
                       ),
                     ),

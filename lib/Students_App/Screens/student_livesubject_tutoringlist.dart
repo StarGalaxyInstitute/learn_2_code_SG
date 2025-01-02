@@ -42,27 +42,22 @@ class StudentLiveSubjectTutoringList extends StatelessWidget {
                       SizedBox(
                         width: 10,
                       ),
-                      Text(
-                        "Request New Subject",
-                        style: GoogleFonts.roboto(
-                          color: AppColors.whitecolor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
+                      CommonWidgets().textWidget(
+                          text: 'Request New Subject',
+                          textAlign: TextAlign.start,
+                          textSize: 16.0,
+                          textColor: AppColors.whitecolor,
+                          textWeight: FontWeight.bold),
                     ],
                   )),
             ),
           ),
           appBar: AppBar(
-            title: Text(
-              "Live Tutoring",
-              style: GoogleFonts.roboto(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            backgroundColor: AppColors.whitecolor,
+            title: CommonWidgets().textWidget(
+                text: 'Live Tutoring',
+                textAlign: TextAlign.start,
+                textSize: 16.0,
+                textWeight: FontWeight.bold),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -142,7 +137,6 @@ Widget searchWidget() {
             },
             child: Icon(
               Icons.filter_list_sharp,
-              color: AppColors.blackcolor,
             ),
           )),
         ],
@@ -162,16 +156,10 @@ Widget liveTutorWidget({subjectName, subjectLessons, tutor}) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(height: 10),
-        Image.asset(
-          color: AppColors.blackcolor,
-          height: 30,
-          'assets/images/math.png',
+        Icon(
+          Icons.menu_book_outlined,
+          size: 30,
         ),
-        // Icon(
-        //   Icons.menu_book_rounded,
-        //   size: 30,
-        //   color: AppColors.blackcolor,
-        // ),
         Spacer(),
         Row(
           children: [

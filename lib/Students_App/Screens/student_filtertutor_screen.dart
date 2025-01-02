@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../Constrant/common_widgets.dart';
 import '../../Constrant/utilities.dart';
 import '../Controllers/student_filtertutor_controller.dart';
 import 'student_filtercoures_result.dart';
@@ -21,10 +22,11 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filters',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 17))),
+        title: CommonWidgets().textWidget(
+            text: 'Filters',
+            textAlign: TextAlign.start,
+            textSize: 17.0,
+            textWeight: FontWeight.bold),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
@@ -37,10 +39,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Looking For Section
-            Text("I'm looking for",
-                style: GoogleFonts.lato(
-                    textStyle:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+            CommonWidgets().textWidget(
+                text: "I'm looking for",
+                textAlign: TextAlign.start,
+                textSize: 14.0,
+                textWeight: FontWeight.bold),
+
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,17 +66,14 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                               borderRadius: BorderRadius.circular(12),
                               color: AppColors.btnBluelight),
                       child: Center(
-                        child: Text(
-                          'Tutors',
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                            fontSize: 16,
-                            color: controller.isfilterTab
+                        child: CommonWidgets().textWidget(
+                            text: 'Tutors',
+                            textColor: controller.isfilterTab
                                 ? AppColors.whitecolor
                                 : Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          )),
-                        ),
+                            textSize: 16.0,
+                            textAlign: TextAlign.start,
+                            textWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -95,17 +96,13 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                               borderRadius: BorderRadius.circular(12),
                               color: AppColors.btnBluelight),
                       child: Center(
-                        child: Text(
-                          'Courses',
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                            fontSize: 16,
-                            color: !controller.isfilterTab
+                        child: CommonWidgets().textWidget(
+                            text: 'Courses',
+                            textAlign: TextAlign.start,
+                            textColor: !controller.isfilterTab
                                 ? AppColors.whitecolor
                                 : Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          )),
-                        ),
+                            textWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -132,10 +129,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
         buildDropdown("Subject", controller.selectedSubject,
             ["MAT 116", "MAT 117", "MAT 118"]),
         SizedBox(height: 16),
-        Text('Availability',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Availability',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
+
         SizedBox(height: 1),
         Obx(() => Wrap(
               spacing: 15,
@@ -149,12 +148,11 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                 'Saturday'
               ]
                   .map((day) => ChoiceChip(
-                        label: Text(
-                          day,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 13)),
-                        ),
+                        label: CommonWidgets().textWidget(
+                            text: day,
+                            textAlign: TextAlign.start,
+                            textSize: 13.0,
+                            textWeight: FontWeight.w400),
                         selected: controller.selectedDays.contains(day),
                         onSelected: (selected) {
                           if (selected) {
@@ -168,20 +166,21 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
             )),
         SizedBox(height: 16),
         // Timeslots Section
-        Text('Timeslots',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Timeslots',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
+
         Obx(() => Wrap(
               spacing: 10,
               children: ['Morning', 'Afternoon', 'Evening']
                   .map((slot) => ChoiceChip(
-                        label: Text(
-                          slot,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 13)),
-                        ),
+                        label: CommonWidgets().textWidget(
+                            text: slot,
+                            textAlign: TextAlign.start,
+                            textSize: 13.0,
+                            textWeight: FontWeight.w400),
                         selected: controller.selectedTimeslot.value == slot,
                         onSelected: (selected) => controller
                             .selectedTimeslot.value = selected ? slot : '',
@@ -197,18 +196,21 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
           "Bachelor's in Computer Science"
         ]),
         SizedBox(height: 16),
-        Text('Rating',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Rating',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
         SizedBox(height: 8),
         Ratingstar(),
         const SizedBox(height: 16),
         // Hourly Rate Slider
-        Text('Hourly Rate',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Hourly Rate',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
+
         Obx(() => RangeSlider(
               values: controller.hourlyRate.value,
               min: 0,
@@ -234,12 +236,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.btnBlue),
                 child: Center(
-                  child: Text('Reset Filter',
-                      style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14))),
+                  child: CommonWidgets().textWidget(
+                      text: 'Reset Filter',
+                      textAlign: TextAlign.start,
+                      textSize: 14.0,
+                      textColor: AppColors.whitecolor,
+                      textWeight: FontWeight.bold),
                 ),
               ),
             )),
@@ -255,12 +257,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.btnBlue),
                 child: Center(
-                  child: Text('Apply Filter',
-                      style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14))),
+                  child: CommonWidgets().textWidget(
+                      text: 'Apply Filter',
+                      textColor: AppColors.whitecolor,
+                      textAlign: TextAlign.start,
+                      textSize: 14.0,
+                      textWeight: FontWeight.bold),
                 ),
               ),
             )),
@@ -282,18 +284,22 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
             ["Beginner", "Intermediate", "Advanced"]),
         SizedBox(height: 16),
         // Rating Section
-        Text('Rating',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Rating',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
+
         SizedBox(height: 8),
         Ratingstar(),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         // Hourly Rate Slider
-        Text('Price Range',
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Price Range',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
+
         Obx(() => RangeSlider(
               values: controller.hourlyRate.value,
               min: 0,
@@ -307,21 +313,22 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
               onChanged: (values) => controller.hourlyRate.value = values,
             )),
         SizedBox(height: 16),
-        Text("Duration",
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: 'Duration',
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
+
         SizedBox(height: 1),
         Obx(() => Wrap(
               spacing: 10,
               children: ['<1 hr', '1-3 hrs', '3-6 hrs', '6+ hrs']
                   .map((slot) => ChoiceChip(
-                        label: Text(
-                          slot,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 13)),
-                        ),
+                        label: CommonWidgets().textWidget(
+                            text: slot,
+                            textAlign: TextAlign.start,
+                            textSize: 13.0,
+                            textWeight: FontWeight.w400),
                         selected: controller.selectedTimeslot.value == slot,
                         onSelected: (selected) => controller
                             .selectedTimeslot.value = selected ? slot : '',
@@ -343,12 +350,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.btnBlue),
                 child: Center(
-                  child: Text('Reset Filter',
-                      style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14))),
+                  child: CommonWidgets().textWidget(
+                      text: 'Reset Filter',
+                      textColor: AppColors.whitecolor,
+                      textAlign: TextAlign.start,
+                      textSize: 14.0,
+                      textWeight: FontWeight.bold),
                 ),
               ),
             )),
@@ -364,12 +371,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.btnBlue),
                 child: Center(
-                  child: Text('Apply Filter',
-                      style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14))),
+                  child: CommonWidgets().textWidget(
+                      text: 'Apply Filter',
+                      textColor: AppColors.whitecolor,
+                      textAlign: TextAlign.start,
+                      textSize: 14.0,
+                      textWeight: FontWeight.bold),
                 ),
               ),
             )),
@@ -411,12 +418,12 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
           Spacer(),
           Padding(
             padding: const EdgeInsets.all(7.0),
-            child: Text('3 Stars and up',
-                style: GoogleFonts.lato(
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        color: AppColors.greycolor))),
+            child: CommonWidgets().textWidget(
+                text: '3 Stars and up',
+                textAlign: TextAlign.start,
+                textSize: 14.0,
+                textColor: AppColors.greycolor,
+                textWeight: FontWeight.bold),
           ),
         ],
       ),
@@ -428,10 +435,11 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: GoogleFonts.lato(
-                textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 14))),
+        CommonWidgets().textWidget(
+            text: label,
+            textAlign: TextAlign.start,
+            textSize: 14.0,
+            textWeight: FontWeight.bold),
         SizedBox(height: 8),
         DropdownButtonFormField(
           decoration: InputDecoration(
@@ -447,46 +455,22 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
             ),
             filled: false,
           ),
-          dropdownColor: Colors.white,
           value: selectedValue.value,
           items: items
               .map((e) => DropdownMenuItem(
-                  value: e,
-                  child: Text(
-                    e,
-                    style: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 13)),
-                  )))
+                    value: e,
+                    child: CommonWidgets().textWidget(
+                        text: e,
+                        textAlign: TextAlign.start,
+                        textSize: 13.0,
+                        textWeight: FontWeight.w400),
+                  ))
               .toList(),
           onChanged: (value) {
             if (value != null) selectedValue.value = value;
           },
         ),
       ],
-    );
-  }
-
-  Widget buildDurationButton(String text, {bool isSelected = false}) {
-    return GestureDetector(
-      onTap: () {
-        if (!isSelected) {
-          isSelected = true;
-        }
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.purple : Colors.white,
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        margin: EdgeInsets.only(right: 8),
-        child: Text(
-          text,
-          style: TextStyle(color: isSelected ? Colors.white : Colors.black),
-        ),
-      ),
     );
   }
 }

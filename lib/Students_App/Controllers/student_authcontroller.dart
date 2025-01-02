@@ -14,7 +14,6 @@ class StudentAuthcontroller extends GetxController {
   final TextEditingController userNameController = TextEditingController();
 
   String? validationCheck() {
-    print("login-------------- 2 ${emailController.text}");
     String email = emailController.text;
     String password = passwordController.text;
     String useername = userNameController.text;

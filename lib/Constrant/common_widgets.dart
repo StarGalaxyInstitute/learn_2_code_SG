@@ -12,6 +12,7 @@ class CommonWidgets {
       {text,
       textAlign,
       textColor,
+      textdecoration,
       textSize,
       textWeight,
       textmaxLine,
@@ -21,8 +22,8 @@ class CommonWidgets {
       maxLines: textmaxLine,
       textAlign: textAlign,
       overflow: textoverFlow,
-      style: GoogleFonts.lato(
-          color: textColor, fontSize: textSize, fontWeight: textWeight),
+      style: GoogleFonts.rubik(
+          color: textColor, fontSize: textSize, fontWeight: textWeight,decoration: textdecoration),
     );
   }
 
@@ -56,7 +57,7 @@ class CommonWidgets {
       validation,
       controller}) {
     return TextFormField(
-      style: GoogleFonts.lato(
+      style: GoogleFonts.rubik(
         fontSize: 18,
       ),
       controller: controller,
@@ -65,7 +66,7 @@ class CommonWidgets {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: GoogleFonts.lato(
+        labelStyle: GoogleFonts.rubik(
           fontSize: 16,
           fontWeight: FontWeight.bold,
           color: AppColors.darkBlue,

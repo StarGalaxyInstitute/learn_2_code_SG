@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../Constrant/common_widgets.dart';
 import '../../Constrant/utilities.dart';
 import '../Controllers/student_filtertutor_resultcontroller.dart';
 import '../Helpers/student_tutormodel.dart';
@@ -13,10 +14,12 @@ class StudentFiltertutorResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Filtered Results', style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
+        title: CommonWidgets().textWidget(
+            text: 'Filtered Results',
+            textAlign: TextAlign.start,
+            textSize: 16.0,
+            textWeight: FontWeight.bold),
         elevation: 0,
         centerTitle: false,
       ),
@@ -77,7 +80,11 @@ Widget searchWidget() {
               children: [
                 Icon(Icons.filter_list, color: Colors.grey),
                 SizedBox(width: 5),
-                Text('5 Filters', style: TextStyle(color: Colors.grey)),
+                CommonWidgets().textWidget(
+                    text: '5 Filters',
+                    textColor: AppColors.greycolor,
+                    textAlign: TextAlign.center,
+                    textWeight: FontWeight.bold),
               ],
             ),
           ),
@@ -113,32 +120,29 @@ class TutorCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    tutor.name,
-                    style: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15)),
-                  ),
+                  CommonWidgets().textWidget(
+                      text: tutor.name,
+                      textSize: 15.0,
+                      textAlign: TextAlign.start,
+                      textWeight: FontWeight.bold),
                   SizedBox(width: 6),
-                  Text(
-                    tutor.university,
-                    style: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            color: AppColors.greycolor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13)),
-                  ),
+                  CommonWidgets().textWidget(
+                      text: tutor.university,
+                      textSize: 13.0,
+                      textColor: AppColors.greycolor,
+                      textAlign: TextAlign.start,
+                      textWeight: FontWeight.w400),
                   SizedBox(width: 6),
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 16),
                       SizedBox(width: 4),
-                      Text(
-                        '${tutor.rating} (${tutor.reviews})',
-                        style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 12)),
-                      ),
+                      CommonWidgets().textWidget(
+                          text: '${tutor.rating} (${tutor.reviews})',
+                          textColor: AppColors.greycolor,
+                          textSize: 12.0,
+                          textAlign: TextAlign.start,
+                          textWeight: FontWeight.w500),
                     ],
                   ),
                 ],
@@ -147,21 +151,18 @@ class TutorCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text('\$${tutor.hourlyRate}/hr',
-                    style: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            color: AppColors.btnBlue,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15))),
-                Text(
-                  '\$${tutor.oldRate}',
-                  style: GoogleFonts.lato(
-                      textStyle: TextStyle(
-                          decoration: TextDecoration.lineThrough,
-                          color: AppColors.greycolor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13)),
-                ),
+                CommonWidgets().textWidget(
+                    text: '\$${tutor.hourlyRate}/hr',
+                    textColor: AppColors.btnBlue,
+                    textAlign: TextAlign.start,
+                    textSize: 15.0,
+                    textWeight: FontWeight.w500),
+                CommonWidgets().textWidget(
+                    text: '\$${tutor.oldRate}',
+                    textColor: AppColors.greycolor,
+                    textSize: 13.0,
+                    textAlign: TextAlign.start,
+                    textWeight: FontWeight.w500),
               ],
             ),
           ],

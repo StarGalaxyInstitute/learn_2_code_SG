@@ -7,12 +7,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_homecontroller.dart';
+import '../Controllers/student_toplivetutor_controller.dart';
+import 'student_filtercoures_result.dart';
 import 'student_filtertutor_screen.dart';
 import 'student_livesubject_tutoringlist.dart';
+import 'student_livetutor_personaldetailsscreen.dart';
+import 'student_weeklytoplive_tutorsListscreen.dart';
 
 class StudentHomepage extends StatelessWidget {
   StudentHomecontroller _studentHomecontroller =
       Get.put(StudentHomecontroller());
+  final StudentToplivetutorController tutorController =
+      Get.put(StudentToplivetutorController());
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +52,8 @@ class StudentHomepage extends StatelessWidget {
                                     textWeight: FontWeight.bold),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.to(() => StudentLiveSubjectTutoringList());
+                                    Get.to(
+                                        () => StudentLiveSubjectTutoringList());
                                   },
                                   child: CommonWidgets().textWidget(
                                       text: "View All >",
@@ -85,11 +92,16 @@ class StudentHomepage extends StatelessWidget {
                                     textSize: 16.0,
                                     textAlign: TextAlign.center,
                                     textWeight: FontWeight.w600),
-                                CommonWidgets().textWidget(
-                                    text: "All Courses>",
-                                    textSize: 12.0,
-                                    textAlign: TextAlign.center,
-                                    textWeight: FontWeight.w500),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => StudentFiltercouresresult());
+                                  },
+                                  child: CommonWidgets().textWidget(
+                                      text: "All Courses >",
+                                      textSize: 11.0,
+                                      textAlign: TextAlign.center,
+                                      textWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                             SizedBox(height: Get.height * 0.01),
@@ -119,11 +131,17 @@ class StudentHomepage extends StatelessWidget {
                                     textSize: 16.0,
                                     textAlign: TextAlign.center,
                                     textWeight: FontWeight.w600),
-                                CommonWidgets().textWidget(
-                                    text: "All Tutors>",
-                                    textSize: 12.0,
-                                    textAlign: TextAlign.center,
-                                    textWeight: FontWeight.w500),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() =>
+                                        StudentWeeklyTopLiveTutorsListScreen());
+                                  },
+                                  child: CommonWidgets().textWidget(
+                                      text: "All Tutors >",
+                                      textSize: 11.0,
+                                      textAlign: TextAlign.center,
+                                      textWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                             SizedBox(height: Get.height * 0.01),
@@ -135,11 +153,16 @@ class StudentHomepage extends StatelessWidget {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
+                                  final tutor = tutorController.tutors[index];
                                   return GestureDetector(
-                                    // onTap: () {
-                                    //   Get.to(TutorsDetailsPage());
-                                    // },
-                                    child: topLiveTutor(),
+                                    onTap: () {
+                                      tutorController.selectTutor(tutor);
+                                      Get.to(() =>
+                                          StudentLiveTutorPersonalDetailsScreen());
+                                    },
+                                    child: topLiveTutor(
+                                        name: tutor.name,
+                                        subject: tutor.subject),
                                   );
                                 },
                               ),
@@ -153,11 +176,16 @@ class StudentHomepage extends StatelessWidget {
                                     textSize: 16.0,
                                     textAlign: TextAlign.center,
                                     textWeight: FontWeight.w600),
-                                CommonWidgets().textWidget(
-                                    text: "All Courses>",
-                                    textSize: 12.0,
-                                    textAlign: TextAlign.center,
-                                    textWeight: FontWeight.w500),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => StudentFiltercouresresult());
+                                  },
+                                  child: CommonWidgets().textWidget(
+                                      text: "All Courses >",
+                                      textSize: 11.0,
+                                      textAlign: TextAlign.center,
+                                      textWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                             SizedBox(height: Get.height * 0.01),
@@ -312,7 +340,7 @@ class StudentHomepage extends StatelessWidget {
     );
   }
 
-  Widget topLiveTutor() {
+  Widget topLiveTutor({name, subject}) {
     return Container(
       width: Get.width * 0.4,
       margin: EdgeInsets.all(5),
@@ -334,11 +362,17 @@ class StudentHomepage extends StatelessWidget {
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rpCV_Esm0MpYTJEy8d5XqtzEDUFre-D_1g&s"),
           ),
           CommonWidgets().textWidget(
-              text: "Albert Flores",
+              text: name,
               textSize: 15.0,
-              textWeight: FontWeight.w700),
+              textColor: AppColors.blackcolor,
+              textAlign: TextAlign.start,
+              textWeight: FontWeight.bold),
           CommonWidgets().textWidget(
-              text: "Math 116", textSize: 12.0, textWeight: FontWeight.w500),
+              text: subject,
+              textSize: 12.0,
+              textColor: AppColors.blackcolor,
+              textAlign: TextAlign.start,
+              textWeight: FontWeight.w500),
         ],
       ),
     );
