@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps, use_key_in_widget_constructors, file_names
+// ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps, use_key_in_widget_constructors, file_names, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
