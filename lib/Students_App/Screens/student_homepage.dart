@@ -8,6 +8,7 @@ import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_homecontroller.dart';
 import '../Controllers/student_toplivetutor_controller.dart';
+import 'student_allcourses_listscreen.dart';
 import 'student_filtercoures_result.dart';
 import 'student_filtertutor_screen.dart';
 import 'student_livesubject_tutoringlist.dart';
@@ -94,7 +95,7 @@ class StudentHomepage extends StatelessWidget {
                                     textWeight: FontWeight.w600),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.to(() => StudentFiltercouresresult());
+                                    Get.to(() => StudentAllcoursesListscreen());
                                   },
                                   child: CommonWidgets().textWidget(
                                       text: "All Courses >",
@@ -178,7 +179,7 @@ class StudentHomepage extends StatelessWidget {
                                     textWeight: FontWeight.w600),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.to(() => StudentFiltercouresresult());
+                                    Get.to(() => StudentAllcoursesListscreen());
                                   },
                                   child: CommonWidgets().textWidget(
                                       text: "All Courses >",
@@ -254,7 +255,6 @@ class StudentHomepage extends StatelessWidget {
               },
               child: Icon(
                 Icons.filter_list_sharp,
-                color: AppColors.blackcolor,
               ),
             )),
           ],
@@ -277,7 +277,6 @@ class StudentHomepage extends StatelessWidget {
           Icon(
             Icons.menu_book_rounded,
             size: 20,
-            color: AppColors.blackcolor,
           ),
           SizedBox(height: 10),
           CommonWidgets().textWidget(
@@ -348,10 +347,6 @@ class StudentHomepage extends StatelessWidget {
       decoration: BoxDecoration(
           color: Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0)
               .withOpacity(.2),
-          // border: Border.all(
-          //   width: 2,
-          //   color: AppColors.greyColor.withOpacity(0.5),
-          // ),
           borderRadius: BorderRadius.circular(15)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -364,13 +359,11 @@ class StudentHomepage extends StatelessWidget {
           CommonWidgets().textWidget(
               text: name,
               textSize: 15.0,
-              textColor: AppColors.blackcolor,
               textAlign: TextAlign.start,
               textWeight: FontWeight.bold),
           CommonWidgets().textWidget(
               text: subject,
               textSize: 12.0,
-              textColor: AppColors.blackcolor,
               textAlign: TextAlign.start,
               textWeight: FontWeight.w500),
         ],
