@@ -61,6 +61,8 @@ class StudentRequestNewSubjectScreen extends StatelessWidget {
             ),
           ),
           appBar: AppBar(
+              backgroundColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             title: Text(
               "Request New Subject",
               style: GoogleFonts.roboto(
@@ -68,7 +70,6 @@ class StudentRequestNewSubjectScreen extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            backgroundColor: AppColors.whitecolor,
           ),
           body: SingleChildScrollView(
             child: Column(

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps, use_key_in_widget_constructors, file_names
+// ignore_for_file: prefer_const_constructors, unnecessary_brace_in_string_interps, use_key_in_widget_constructors, file_names, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,6 +16,8 @@ class StudentWeeklyTopLiveTutorsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: 'All Tutors',
             textSize: 17.0,
@@ -107,16 +109,8 @@ Widget liveTutorWidget(
     margin: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
     padding: EdgeInsets.all(11),
     decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.2),
-          blurRadius: 8,
-          spreadRadius: 2,
-        ),
-      ],
-    ),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.greycolor)),
     child: Row(
       children: [
         CircleAvatar(

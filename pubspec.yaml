@@ -45,6 +45,8 @@ dependencies:
   lottie:
   flutter_carousel_widget:
   postgres:
+  carousel_slider:
+  flutter_carousel_intro: 
 
 dev_dependencies:
   flutter_test:

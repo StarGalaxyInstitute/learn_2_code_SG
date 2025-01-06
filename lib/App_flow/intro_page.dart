@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields, use_key_in_widget_constructors, must_be_immutable, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, use_key_in_widget_constructors, must_be_immutable, prefer_interpolation_to_compose_strings, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

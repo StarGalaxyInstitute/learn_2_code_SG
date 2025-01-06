@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, prefer_final_fields, unused_field, use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, prefer_final_fields, unused_field, use_key_in_widget_constructors, must_be_immutable, deprecated_member_use
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -7,7 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_homecontroller.dart';
+import '../Controllers/student_allcoureseslist_controller.dart';
 import '../Controllers/student_toplivetutor_controller.dart';
+import 'Student_allcourses_detailsscreen.dart';
+import 'student_allcourses_listscreen.dart';
 import 'student_filtercoures_result.dart';
 import 'student_filtertutor_screen.dart';
 import 'student_livesubject_tutoringlist.dart';
@@ -19,6 +22,8 @@ class StudentHomepage extends StatelessWidget {
       Get.put(StudentHomecontroller());
   final StudentToplivetutorController tutorController =
       Get.put(StudentToplivetutorController());
+  final StudentAllcoureseslistController allcoureseslistController =
+      Get.put(StudentAllcoureseslistController());
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +99,7 @@ class StudentHomepage extends StatelessWidget {
                                     textWeight: FontWeight.w600),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.to(() => StudentFiltercouresresult());
+                                    Get.to(() => StudentAllcoursesListscreen());
                                   },
                                   child: CommonWidgets().textWidget(
                                       text: "All Courses >",
@@ -113,11 +118,21 @@ class StudentHomepage extends StatelessWidget {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
+                                  final course =
+                                      allcoureseslistController.courses[index];
                                   return GestureDetector(
-                                    // onTap: () {
-                                    //   Get.to(() => CourseDetailPage());
-                                    // },
-                                    child: trendingCourseWidget(),
+                                    onTap: () {
+                                      allcoureseslistController
+                                          .selectTutor(course);
+                                      Get.to(() =>
+                                          StudentAllCoursesDetailsScreen());
+                                    },
+                                    child: trendingCourseWidget(
+                                      name: course.title,
+                                      author: course.author,
+                                      price: course.price,
+                                      rating: course.rating,
+                                    ),
                                   );
                                 },
                               ),
@@ -178,7 +193,7 @@ class StudentHomepage extends StatelessWidget {
                                     textWeight: FontWeight.w600),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.to(() => StudentFiltercouresresult());
+                                    Get.to(() => StudentAllcoursesListscreen());
                                   },
                                   child: CommonWidgets().textWidget(
                                       text: "All Courses >",
@@ -197,11 +212,21 @@ class StudentHomepage extends StatelessWidget {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
+                                  final course =
+                                      allcoureseslistController.courses[index];
                                   return GestureDetector(
-                                    // onTap: () {
-                                    //   Get.to(() => CourseDetailPage());
-                                    // },
-                                    child: topNewCourses(),
+                                    onTap: () {
+                                      allcoureseslistController
+                                          .selectTutor(course);
+                                      Get.to(() =>
+                                          StudentAllCoursesDetailsScreen());
+                                    },
+                                    child: trendingCourseWidget(
+                                      name: course.title,
+                                      author: course.author,
+                                      price: course.price,
+                                      rating: course.rating,
+                                    ),
                                   );
                                 },
                               ),
@@ -254,7 +279,6 @@ class StudentHomepage extends StatelessWidget {
               },
               child: Icon(
                 Icons.filter_list_sharp,
-                color: AppColors.blackcolor,
               ),
             )),
           ],
@@ -277,7 +301,6 @@ class StudentHomepage extends StatelessWidget {
           Icon(
             Icons.menu_book_rounded,
             size: 20,
-            color: AppColors.blackcolor,
           ),
           SizedBox(height: 10),
           CommonWidgets().textWidget(
@@ -289,7 +312,7 @@ class StudentHomepage extends StatelessWidget {
     );
   }
 
-  Widget trendingCourseWidget() {
+  Widget trendingCourseWidget({name, author, price, rating}) {
     return Container(
       width: Get.width * 0.45,
       margin: EdgeInsets.all(5),
@@ -314,23 +337,25 @@ class StudentHomepage extends StatelessWidget {
                     fit: BoxFit.cover)),
           ),
           CommonWidgets().textWidget(
-              text: "Advanced Front-End Programming Techniques",
+              text: name,
               textSize: 14.0,
               textmaxLine: 2,
               textoverFlow: TextOverflow.ellipsis,
               textWeight: FontWeight.w600),
           CommonWidgets().textWidget(
-              text: "Julia Anatole · 1 hr",
+              text: author,
               textSize: 12.0,
+              textmaxLine: 1,
+              textoverFlow: TextOverflow.ellipsis,
               textWeight: FontWeight.w400),
           Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CommonWidgets().textWidget(
-                  text: "\$12.99", textSize: 14.0, textWeight: FontWeight.w600),
+                  text: price, textSize: 14.0, textWeight: FontWeight.w600),
               CommonWidgets().textWidget(
-                  text: "⭐4.5 (2,980)",
+                  text: "⭐${rating}",
                   textSize: 12.0,
                   textWeight: FontWeight.w400),
             ],
@@ -348,10 +373,6 @@ class StudentHomepage extends StatelessWidget {
       decoration: BoxDecoration(
           color: Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0)
               .withOpacity(.2),
-          // border: Border.all(
-          //   width: 2,
-          //   color: AppColors.greyColor.withOpacity(0.5),
-          // ),
           borderRadius: BorderRadius.circular(15)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -364,13 +385,11 @@ class StudentHomepage extends StatelessWidget {
           CommonWidgets().textWidget(
               text: name,
               textSize: 15.0,
-              textColor: AppColors.blackcolor,
               textAlign: TextAlign.start,
               textWeight: FontWeight.bold),
           CommonWidgets().textWidget(
               text: subject,
               textSize: 12.0,
-              textColor: AppColors.blackcolor,
               textAlign: TextAlign.start,
               textWeight: FontWeight.w500),
         ],

@@ -1,28 +1,34 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, use_super_parameters
+// ignore_for_file: prefer_const_constructors, use_super_parameters, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learn_to_code/Constrant/common_widgets.dart';
-import '../../Constrant/utilities.dart';
-import '../Controllers/student_filtercoures_resultcontroller.dart';
-import '../Helpers/student_coures.dart';
 
-class StudentFiltercouresresult extends StatelessWidget {
-  final StudentFiltercouresresultcontroller courseController =
-      Get.put(StudentFiltercouresresultcontroller());
+import '../../Constrant/common_widgets.dart';
+import '../../Constrant/utilities.dart';
+import '../Controllers/student_allcoureseslist_controller.dart';
+import '../Helpers/student_coures.dart';
+import 'Student_allcourses_detailsscreen.dart';
+
+class StudentAllcoursesListscreen extends StatelessWidget {
+  final StudentAllcoureseslistController controller =
+      Get.put(StudentAllcoureseslistController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
-            text: 'Filtered Results',
+            text: 'All Courses',
             textSize: 17.0,
             textAlign: TextAlign.start,
             textWeight: FontWeight.bold),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Get.back(),
+        ),
       ),
       body: Column(
         children: [
@@ -31,20 +37,24 @@ class StudentFiltercouresresult extends StatelessWidget {
             child: searchWidget(),
           ),
           Expanded(
-            child: Obx(
-              () => ListView.separated(
-                padding: EdgeInsets.zero,
-                itemCount: courseController.courses.length,
-                itemBuilder: (context, index) {
-                  final course = courseController.courses[index];
-                  return CourseCard(course: course);
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Divider(
-                    color: AppColors.greycolor,
-                  );
-                },
-              ),
+            child: ListView.separated(
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              itemCount: controller.courses.length,
+              itemBuilder: (context, index) {
+                final course = controller.courses[index];
+                return GestureDetector(
+                    onTap: () {
+                      controller.selectTutor(course);
+                      Get.to(() => StudentAllCoursesDetailsScreen());
+                    },
+                    child: CourseCard(course: course));
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Divider(
+                  color: AppColors.greycolor,
+                );
+              },
             ),
           ),
         ],
@@ -69,31 +79,20 @@ Widget searchWidget() {
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: "Search",
+                hintText: "Search a courses..",
                 hintStyle: GoogleFonts.abyssinicaSil(),
                 prefixIcon: Icon(Icons.search),
               ),
             ),
           ),
-          Spacer(),
           Container(
             width: 1,
             color: AppColors.btnborder,
             height: 50,
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.filter_list, color: Colors.grey),
-                SizedBox(width: 5),
-                CommonWidgets().textWidget(
-                    text: '5 Filters',
-                    textColor: AppColors.greycolor,
-                    textAlign: TextAlign.start,
-                    textWeight: FontWeight.bold),
-              ],
-            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.filter_list, color: Colors.grey),
           ),
         ],
       ));

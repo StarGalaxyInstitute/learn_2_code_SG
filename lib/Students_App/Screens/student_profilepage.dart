@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import, use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: prefer_const_constructors, unused_import, use_key_in_widget_constructors, must_be_immutable, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +8,9 @@ import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_profilecontroller.dart';
 import 'package:learn_to_code/Students_App/Screens/student_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'student_privacypolicy_page.dart';
+import 'student_termsandconditions_page.dart';
 
 class StudentProfilepage extends StatelessWidget {
   StudentProfilecontroller studentProfilecontroller =
@@ -148,7 +151,7 @@ class StudentProfilepage extends StatelessWidget {
                                         textWeight: FontWeight.w700),
                                     CommonWidgets().textWidget(
                                         text: "1234567890",
-                                        textSize: 15.0,
+                                        textSize: 13.0,
                                         textWeight: FontWeight.w600),
                                   ],
                                 ),
@@ -163,7 +166,9 @@ class StudentProfilepage extends StatelessWidget {
                                         textWeight: FontWeight.w700),
                                     CommonWidgets().textWidget(
                                         text: "Computer Science Department",
-                                        textSize: 15.0,
+                                        textSize: 13.0,
+                                        textmaxLine: 1,
+                                        textoverFlow: TextOverflow.ellipsis,
                                         textWeight: FontWeight.w600),
                                   ],
                                 ),
@@ -188,6 +193,8 @@ class StudentProfilepage extends StatelessWidget {
                                   title: CommonWidgets().textWidget(
                                       text: "Personal Information",
                                       textSize: 14.0,
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
                                     Icons.arrow_forward_ios,
@@ -205,6 +212,8 @@ class StudentProfilepage extends StatelessWidget {
                                   title: CommonWidgets().textWidget(
                                       text: "Payment",
                                       textSize: 14.0,
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
                                     Icons.arrow_forward_ios,
@@ -222,6 +231,8 @@ class StudentProfilepage extends StatelessWidget {
                                   title: CommonWidgets().textWidget(
                                       text: "Support",
                                       textSize: 14.0,
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
                                     Icons.arrow_forward_ios,
@@ -243,12 +254,15 @@ class StudentProfilepage extends StatelessWidget {
                                   leading: Icon(Icons.feed_outlined),
                                   contentPadding: EdgeInsets.zero,
                                   minTileHeight: 0,
-                                  // onTap: () {
-                                  //   Get.to(() => TearmsPage());
-                                  // },
+                                  onTap: () {
+                                    Get.to(
+                                        () => StudentTermsandconditionsPage());
+                                  },
                                   title: CommonWidgets().textWidget(
                                       text: "Tearms & Conditions",
                                       textSize: 14.0,
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
                                     Icons.arrow_forward_ios,
@@ -260,11 +274,13 @@ class StudentProfilepage extends StatelessWidget {
                                   leading: Icon(Icons.feed_outlined),
                                   contentPadding: EdgeInsets.zero,
                                   minTileHeight: 0,
-                                  // onTap: () {
-                                  //   Get.to(() => PolicyPage());
-                                  // },
+                                  onTap: () {
+                                    Get.to(() => StudentPrivacypolicyPage());
+                                  },
                                   title: CommonWidgets().textWidget(
                                       text: "Privacy Policy",
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textSize: 14.0,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
@@ -293,6 +309,8 @@ class StudentProfilepage extends StatelessWidget {
                                   title: CommonWidgets().textWidget(
                                       text: "Delete Account",
                                       textSize: 14.0,
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
                                     Icons.arrow_forward_ios,
@@ -307,6 +325,8 @@ class StudentProfilepage extends StatelessWidget {
                                   onTap: () => showAlertDialog(context),
                                   title: CommonWidgets().textWidget(
                                       text: "Logout",
+                                      textoverFlow: TextOverflow.ellipsis,
+                                      textmaxLine: 1,
                                       textSize: 14.0,
                                       textWeight: FontWeight.w600),
                                   trailing: Icon(
