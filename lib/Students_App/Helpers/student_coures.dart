@@ -1,4 +1,5 @@
 class StudentCoures {
+   final String id;
   final String image;
   final String title;
   final String author;
@@ -10,6 +11,7 @@ class StudentCoures {
 
 
   StudentCoures({
+    required this.id,
     required this.image,
     required this.title,
     required this.author,
@@ -17,7 +19,7 @@ class StudentCoures {
     required this.originalPrice,
     required this.rating,
     required this.tag,
-        required this.details,
-
+    required this.details,
   });
+
 }

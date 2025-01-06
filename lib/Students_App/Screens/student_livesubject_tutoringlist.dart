@@ -53,6 +53,8 @@ class StudentLiveSubjectTutoringList extends StatelessWidget {
             ),
           ),
           appBar: AppBar(
+              backgroundColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             title: CommonWidgets().textWidget(
                 text: 'Live Tutoring',
                 textAlign: TextAlign.start,

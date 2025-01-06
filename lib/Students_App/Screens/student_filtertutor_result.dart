@@ -17,6 +17,8 @@ class StudentFiltertutorResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: 'Filtered Results',
             textAlign: TextAlign.start,

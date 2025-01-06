@@ -16,6 +16,8 @@ class StudentWeeklyTopLiveTutorsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: 'All Tutors',
             textSize: 17.0,
