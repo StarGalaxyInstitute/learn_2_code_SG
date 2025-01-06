@@ -44,6 +44,7 @@ dependencies:
   smooth_page_indicator:
   lottie:
   flutter_carousel_widget:
+  postgres:
 
 dev_dependencies:
   flutter_test:
