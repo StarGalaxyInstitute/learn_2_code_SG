@@ -8,12 +8,13 @@ import 'package:learn_to_code/Constrant/preferences.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Parents_App/Screens/parents_register.dart';
+import 'package:learn_to_code/Staff_App/Screens/staff_dashboard.dart';
 import 'package:learn_to_code/Staff_App/Screens/staff_register.dart';
 import 'package:learn_to_code/Students_App/Screens/student_register.dart';
 
 class AppFlowsetPage extends StatelessWidget {
   AppFlowController _appFlowController = Get.put(AppFlowController());
-
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -99,7 +100,11 @@ class AppFlowsetPage extends StatelessWidget {
                     )
                         .whenComplete(
                       () {
-                        Get.to(() => StaffRegister());
+                        if (_appFlowController.isaccess == true) {
+                          Get.to(() => StaffDashboard());
+                        } else {
+                          Get.to(() => StaffRegister());
+                        }
                       },
                     );
                   } else if (_appFlowController.selectType.value == 3) {

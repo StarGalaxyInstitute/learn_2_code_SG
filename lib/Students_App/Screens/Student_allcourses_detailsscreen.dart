@@ -30,11 +30,11 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
         tag: course.tag,
         details: course.details); // Initialize it directly
 
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Obx(() {
-            return IconButton(
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
               icon: Icon(
                 controller.isFavorite(item.id)
                     ? Icons.bookmark
@@ -44,197 +44,200 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
               onPressed: () {
                 controller.toggleFavorite(item.id);
               },
-            );
-          }),
-        ],
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        title: CommonWidgets().textWidget(
-            text: 'About Courses',
-            textSize: 16.0,
-            textAlign: TextAlign.start,
-            textWeight: FontWeight.bold),
-      ),
-      body: course == null
-          ? Center(
-              child: CommonWidgets().textWidget(
-                  text: "No Courses selected",
-                  textSize: 16.0,
-                  textAlign: TextAlign.start,
-                  textWeight: FontWeight.bold),
             )
-          : SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        course.image,
-                        fit: BoxFit.cover,
-                        height: 160,
-                        width: double.infinity,
+          ],
+          backgroundColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent,
+          title: CommonWidgets().textWidget(
+              text: 'About Courses',
+              textSize: 16.0,
+              textAlign: TextAlign.start,
+              textWeight: FontWeight.bold),
+        ),
+        body: course == null
+            ? Center(
+                child: CommonWidgets().textWidget(
+                    text: "No Courses selected",
+                    textSize: 16.0,
+                    textAlign: TextAlign.start,
+                    textWeight: FontWeight.bold),
+              )
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          course.image,
+                          fit: BoxFit.cover,
+                          height: 160,
+                          width: double.infinity,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CommonWidgets().textWidget(
-                        text: course.title,
-                        textSize: 15.0,
-                        textAlign: TextAlign.start,
-                        textWeight: FontWeight.bold),
-                    CommonWidgets().textWidget(
-                        text: course.author,
-                        textSize: 13.0,
-                        textColor: AppColors.greycolor,
-                        textAlign: TextAlign.start,
-                        textWeight: FontWeight.w500),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        if (course.tag.isNotEmpty)
-                          Container(
-                            margin: EdgeInsets.only(top: 6),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: course.tag == 'Top Author'
-                                  ? Colors.purple[100]
-                                  : Colors.green[100],
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: CommonWidgets().textWidget(
-                                text: course.tag,
-                                textSize: 11.0,
-                                textColor: AppColors.blackcolor,
-                                textAlign: TextAlign.start,
-                                textWeight: FontWeight.w400),
-                          ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.orange,
-                              size: 16,
-                            ),
-                            SizedBox(width: 4),
-                            CommonWidgets().textWidget(
-                                text: course.rating,
-                                textSize: 14.0,
-                                textColor: AppColors.greycolor,
-                                textAlign: TextAlign.start,
-                                textWeight: FontWeight.w600),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CommonWidgets().textWidget(
-                        text: course.details,
-                        textSize: 11.0,
-                        textColor: AppColors.greycolor,
-                        textAlign: TextAlign.start,
-                        textWeight: FontWeight.w500),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.selectedIndex.value = 0;
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(right: 7),
-                              padding: EdgeInsets.all(10),
-                              decoration: controller.selectedIndex.value == 0
-                                  ? BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.btnBlue)
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.btnborder),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CommonWidgets().textWidget(
+                          text: course.title,
+                          textSize: 15.0,
+                          textAlign: TextAlign.start,
+                          textWeight: FontWeight.bold),
+                      CommonWidgets().textWidget(
+                          text: course.author,
+                          textSize: 13.0,
+                          textColor: AppColors.greycolor,
+                          textAlign: TextAlign.start,
+                          textWeight: FontWeight.w500),
+                      Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          if (course.tag.isNotEmpty)
+                            Container(
+                              margin: EdgeInsets.only(top: 6),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: course.tag == 'Top Author'
+                                    ? Colors.purple[100]
+                                    : Colors.green[100],
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: CommonWidgets().textWidget(
-                                  text: 'About',
+                                  text: course.tag,
+                                  textSize: 11.0,
+                                  textColor: AppColors.blackcolor,
+                                  textAlign: TextAlign.start,
+                                  textWeight: FontWeight.w400),
+                            ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Colors.orange,
+                                size: 16,
+                              ),
+                              SizedBox(width: 4),
+                              CommonWidgets().textWidget(
+                                  text: course.rating,
                                   textSize: 14.0,
-                                  textColor: controller.selectedIndex.value == 0
-                                      ? AppColors.whitecolor
-                                      : Colors.grey,
-                                  textAlign: TextAlign.center,
-                                  textWeight: FontWeight.bold),
+                                  textColor: AppColors.greycolor,
+                                  textAlign: TextAlign.start,
+                                  textWeight: FontWeight.w600),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CommonWidgets().textWidget(
+                          text: course.details,
+                          textSize: 11.0,
+                          textColor: AppColors.greycolor,
+                          textAlign: TextAlign.start,
+                          textWeight: FontWeight.w500),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.selectedIndex.value = 0;
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 7),
+                                padding: EdgeInsets.all(10),
+                                decoration: controller.selectedIndex.value == 0
+                                    ? BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.btnBlue)
+                                    : BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.btnborder),
+                                child: CommonWidgets().textWidget(
+                                    text: 'About',
+                                    textSize: 14.0,
+                                    textColor:
+                                        controller.selectedIndex.value == 0
+                                            ? AppColors.whitecolor
+                                            : Colors.grey,
+                                    textAlign: TextAlign.center,
+                                    textWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.selectedIndex.value = 1;
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(right: 7),
-                              padding: EdgeInsets.all(10),
-                              decoration: controller.selectedIndex.value == 1
-                                  ? BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.btnBlue)
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.btnborder),
-                              child: CommonWidgets().textWidget(
-                                  text: 'Reviews',
-                                  textSize: 14.0,
-                                  textColor: controller.selectedIndex.value == 1
-                                      ? AppColors.whitecolor
-                                      : Colors.grey,
-                                  textAlign: TextAlign.center,
-                                  textWeight: FontWeight.bold),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.selectedIndex.value = 1;
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 7),
+                                padding: EdgeInsets.all(10),
+                                decoration: controller.selectedIndex.value == 1
+                                    ? BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.btnBlue)
+                                    : BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.btnborder),
+                                child: CommonWidgets().textWidget(
+                                    text: 'Reviews',
+                                    textSize: 14.0,
+                                    textColor:
+                                        controller.selectedIndex.value == 1
+                                            ? AppColors.whitecolor
+                                            : Colors.grey,
+                                    textAlign: TextAlign.center,
+                                    textWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.selectedIndex.value = 2;
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: controller.selectedIndex.value == 2
-                                  ? BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.btnBlue)
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.btnborder),
-                              child: CommonWidgets().textWidget(
-                                  text: 'Author',
-                                  textSize: 14.0,
-                                  textColor: controller.selectedIndex.value == 2
-                                      ? AppColors.whitecolor
-                                      : Colors.grey,
-                                  textAlign: TextAlign.center,
-                                  textWeight: FontWeight.bold),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.selectedIndex.value = 2;
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: controller.selectedIndex.value == 2
+                                    ? BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.btnBlue)
+                                    : BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.btnborder),
+                                child: CommonWidgets().textWidget(
+                                    text: 'Author',
+                                    textSize: 14.0,
+                                    textColor:
+                                        controller.selectedIndex.value == 2
+                                            ? AppColors.whitecolor
+                                            : Colors.grey,
+                                    textAlign: TextAlign.center,
+                                    textWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    if (controller.selectedIndex.value == 0)
-                      About()
-                    else if (controller.selectedIndex.value == 1)
-                      Reviews()
-                    else
-                      Author()
-                  ],
+                        ],
+                      ),
+                      if (controller.selectedIndex.value == 0)
+                        About()
+                      else if (controller.selectedIndex.value == 1)
+                        Reviews()
+                      else
+                        Author()
+                    ],
+                  ),
                 ),
               ),
-            ),
+      ),
     );
   }
 }
@@ -271,7 +274,6 @@ Widget About() {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                  
                     child: course.icon,
                   ),
                   SizedBox(

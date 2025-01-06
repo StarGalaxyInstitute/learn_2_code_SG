@@ -20,6 +20,8 @@ class PrefernceKey {
   static String isStudentFlow = "isStudentFlow";
   static String isStaffFlow = "isStaffFlow";
   static String isParentsFlow = "isParentsFlow";
+    static String isaccess = "isaccess";
+
 }
 
 class AppImage {

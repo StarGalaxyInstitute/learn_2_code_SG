@@ -53,7 +53,7 @@ class StudentLiveSubjectTutoringList extends StatelessWidget {
             ),
           ),
           appBar: AppBar(
-              backgroundColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             surfaceTintColor: Colors.transparent,
             title: CommonWidgets().textWidget(
                 text: 'Live Tutoring',
@@ -65,10 +65,6 @@ class StudentLiveSubjectTutoringList extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  child: searchWidget(),
-                ),
                 Padding(
                   padding:
                       EdgeInsets.only(top: 10, bottom: 6, left: 13, right: 10),
@@ -102,47 +98,6 @@ class StudentLiveSubjectTutoringList extends StatelessWidget {
           )),
     );
   }
-}
-
-Widget searchWidget() {
-  return Container(
-      height: 50,
-      width: Get.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppColors.btnborder),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 4,
-            child: TextFormField(
-              keyboardType: TextInputType.streetAddress,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Search",
-                hintStyle: GoogleFonts.abyssinicaSil(),
-                prefixIcon: Icon(Icons.search),
-              ),
-            ),
-          ),
-          Container(
-            width: 1,
-            color: AppColors.btnborder,
-            height: 50,
-          ),
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              // Get.to(() => StudentFiltertutorScreen());
-            },
-            child: Icon(
-              Icons.filter_list_sharp,
-            ),
-          )),
-        ],
-      ));
 }
 
 Widget liveTutorWidget({subjectName, subjectLessons, tutor}) {

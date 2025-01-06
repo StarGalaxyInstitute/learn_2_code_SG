@@ -10,7 +10,6 @@ class StudentRequestNewSubjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: AppColors.whitecolor,
           bottomNavigationBar: Container(
             margin: EdgeInsets.symmetric(vertical: 13),
             child: Row(
@@ -61,7 +60,7 @@ class StudentRequestNewSubjectScreen extends StatelessWidget {
             ),
           ),
           appBar: AppBar(
-              backgroundColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             surfaceTintColor: Colors.transparent,
             title: Text(
               "Request New Subject",
