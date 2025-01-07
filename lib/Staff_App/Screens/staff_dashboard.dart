@@ -30,7 +30,7 @@ class StaffDashboard extends StatelessWidget {
         )),
   ];
 
-  final Map<int, Map<String, Widget>> _routes = const {
+  final Map<int, Map<String, Widget>> _routes = {
     0: {
       '/': StaffHomepage(),
     },
@@ -38,7 +38,7 @@ class StaffDashboard extends StatelessWidget {
       '/': StaffCourcesPage(),
     },
     2: {
-      '/': StaffProfilepage(),
+      '/': ProfileScreen(),
     },
   };
 

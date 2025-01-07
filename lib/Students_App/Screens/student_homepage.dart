@@ -169,6 +169,7 @@ class StudentHomepage extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   final tutor = tutorController.tutors[index];
+                                  print("data-----------------${tutorController.tutors[index]}");
                                   return GestureDetector(
                                     onTap: () {
                                       tutorController.selectTutor(tutor);

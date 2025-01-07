@@ -46,6 +46,9 @@ dependencies:
   flutter_carousel_widget:
   carousel_slider:
   flutter_carousel_intro: 
+  image_picker: ^0.8.7+4
+  step_progress_indicator:
+  intl:
 
 dev_dependencies:
   flutter_test:

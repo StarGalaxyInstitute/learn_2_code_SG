@@ -14,6 +14,7 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tutor = tutorController.selectedTutor.value;
+    print("data----------------- 2 ${tutorController.selectedTutor.value}");
 
     if (tutor == null) {
       return Scaffold(
@@ -44,7 +45,7 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: tutor.name,
