@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'dart:io';
 
@@ -18,6 +18,8 @@ class ProfileScreen extends StatelessWidget {
     controller.loadProfileDetails();
     return Scaffold(
       appBar: AppBar(
+           backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),

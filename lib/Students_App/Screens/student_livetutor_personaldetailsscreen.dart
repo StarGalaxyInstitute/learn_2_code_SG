@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -14,8 +14,6 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tutor = tutorController.selectedTutor.value;
-    print("data----------------- 2 ${tutorController.selectedTutor.value}");
-
     if (tutor == null) {
       return Scaffold(
         body: Center(

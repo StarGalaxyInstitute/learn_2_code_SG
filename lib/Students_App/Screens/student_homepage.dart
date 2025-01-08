@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, prefer_final_fields, unused_field, use_key_in_widget_constructors, must_be_immutable, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, prefer_final_fields, unused_field, use_key_in_widget_constructors, must_be_immutable, deprecated_member_use, unnecessary_brace_in_string_interps
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -169,7 +169,6 @@ class StudentHomepage extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   final tutor = tutorController.tutors[index];
-                                  print("data-----------------${tutorController.tutors[index]}");
                                   return GestureDetector(
                                     onTap: () {
                                       tutorController.selectTutor(tutor);

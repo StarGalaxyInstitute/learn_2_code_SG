@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +14,8 @@ class PersonalDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+           backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         actions: [
           GestureDetector(
             onTap: () => Get.off(() => StaffDashboard()),
