@@ -1,13 +1,14 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import '../../Constrant/common_widgets.dart';
+import '../../Constrant/preferences.dart';
 import '../../Constrant/utilities.dart';
 import '../Controllers/parents_logincontroller.dart';
+import 'parents_homepage.dart';
 
-class ParentsRegister extends StatelessWidget {
+class ParentsOtpScreen extends StatelessWidget {
   final ParentsLogincontroller controller = Get.put(ParentsLogincontroller());
 
   @override
@@ -21,35 +22,37 @@ class ParentsRegister extends StatelessWidget {
             Image.asset('assets/images/login_img.png',
                 height: 200), // Replace with your image
             SizedBox(height: 20),
-
-            InternationalPhoneNumberInput(
-              onInputChanged: (PhoneNumber number) {
-                print(number.phoneNumber);
-              },
-              onInputValidated: (bool value) {
-                print(value);
-              },
-              selectorConfig: SelectorConfig(
-                selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                useBottomSheetSafeArea: true,
+            Obx(() => Text(
+                  'Your OTP is: ${controller.generatedOtp.value}',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                )),
+            SizedBox(height: 20),
+            TextField(
+              keyboardType: TextInputType.number,
+              maxLength: 4,
+              controller: controller.otpcontroller,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter OTP',
               ),
-              ignoreBlank: false,
-              autoValidateMode: AutovalidateMode.disabled,
-              selectorTextStyle: TextStyle(color: Colors.black),
-              initialValue: PhoneNumber(isoCode: 'IN'),
-              textFieldController: controller.phonecontroller,
-              formatInput: true,
-              keyboardType:
-                  TextInputType.numberWithOptions(signed: true, decimal: true),
-              inputBorder: OutlineInputBorder(),
-              onSaved: (PhoneNumber number) {
-                print('On Saved: $number');
+              onChanged: (value) {
+                if (value == controller.generatedOtp.value) {
+                  Get.snackbar("Success", "OTP Matched!");
+                }
               },
             ),
-
             SizedBox(height: 20),
             GestureDetector(
-              onTap: controller.verifyPhoneNumber,
+              onTap: () {
+                if (controller.otpcontroller.text ==
+                    controller.generatedOtp.value) {
+                  Get.offAll(ParentsHomepage());
+                  Preference.preference.saveBool(PrefernceKey.isParentsFlow,
+                      true); // Navigate to the next screen
+                } else {
+                  Get.snackbar("Error", "Please enter the correct OTP.");
+                }
+              },
               child: Container(
                 height: 45,
                 decoration: BoxDecoration(
@@ -57,7 +60,7 @@ class ParentsRegister extends StatelessWidget {
                     color: AppColors.btnBlue),
                 child: Center(
                   child: CommonWidgets().textWidget(
-                      text: 'Login',
+                      text: 'Next',
                       textColor: AppColors.whitecolor,
                       textAlign: TextAlign.start,
                       textSize: 14.0,

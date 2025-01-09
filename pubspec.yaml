@@ -49,6 +49,11 @@ dependencies:
   image_picker: ^0.8.7+4
   step_progress_indicator:
   intl:
+  intl_phone_number_input: 
+  syncfusion_flutter_datagrid: 
+  syncfusion_flutter_calendar:
+  flutter_calendar_carousel:
+  table_calendar:
 
 dev_dependencies:
   flutter_test:
