@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import '../../Constrant/common_widgets.dart';
+import '../../Constrant/utilities.dart';
 import '../Controllers/parents_result_controller.dart';
 
 class SubjectDataSource extends DataGridSource {
@@ -33,27 +35,48 @@ class SubjectDataSource extends DataGridSource {
       Container(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         alignment: Alignment.center,
-        child: Text(row.getCells()[0].value.toString()),
+        child: CommonWidgets().textWidget(
+          text: row.getCells()[0].value.toString(),
+          textWeight: FontWeight.bold,
+          textColor: AppColors.btnBlue,
+          textSize: 16.0,
+        ),
       ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         alignment: Alignment.centerLeft,
-        child: Text(row.getCells()[1].value.toString()),
+        child: CommonWidgets().textWidget(
+          text: row.getCells()[1].value.toString(),
+          textWeight: FontWeight.bold,
+          textSize: 13.0,
+        ),
       ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         alignment: Alignment.center,
-        child: Text(row.getCells()[2].value.toString()),
+        child: CommonWidgets().textWidget(
+          text: row.getCells()[2].value.toString(),
+          textWeight: FontWeight.bold,
+          textSize: 13.0,
+        ),
       ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         alignment: Alignment.center,
-        child: Text(row.getCells()[3].value.toString()),
+        child: CommonWidgets().textWidget(
+          text: row.getCells()[3].value.toString(),
+          textWeight: FontWeight.w500,
+          textSize: 13.0,
+        ),
       ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         alignment: Alignment.center,
-        child: Text(row.getCells()[4].value.toString()),
+        child: CommonWidgets().textWidget(
+          text: row.getCells()[4].value.toString(),
+          textWeight: FontWeight.bold,
+          textSize: 13.0,
+        ),
       ),
     ]);
   }

@@ -14,7 +14,7 @@ class StaffEditProfileScreen extends StatefulWidget {
 }
 
 class _StaffEditProfileScreenState extends State<StaffEditProfileScreen> {
-  final ProfileController profileController = Get.find();
+  final ProfileController profileController = Get.put(ProfileController());
   final TextEditingController nameController = TextEditingController();
   final TextEditingController birthdateController = TextEditingController();
   final TextEditingController qualificationController = TextEditingController();
@@ -61,7 +61,7 @@ class _StaffEditProfileScreenState extends State<StaffEditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-           backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: "Edit Profile", textSize: 18.0, textWeight: FontWeight.w600),

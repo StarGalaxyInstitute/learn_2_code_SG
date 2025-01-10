@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 
+import '../../Constrant/common_widgets.dart';
+
 class ParentsAttendanceScreen extends StatefulWidget {
   const ParentsAttendanceScreen({super.key});
 
@@ -24,16 +26,11 @@ class _CalendarPageState extends State<ParentsAttendanceScreen> {
   late double cHeight;
 
   void updateDates() {
-    // This function is just adding dates to variable,
-    // you can make this dynamic and add date in realtime
     DateTime currentDate = DateTime.now();
     int currentYear = currentDate.year;
     int currentMonth = currentDate.month;
-
-    // Define the list of day numbers for the current month
-    List<int> presentDayNumbers = [1, 5, 6, 9];
-    List<int> absentDayNumbers = [2, 7, 8];
-
+    List<int> presentDayNumbers = [1, 4, 5, 6, 9];
+    List<int> absentDayNumbers = [2, 3, 7, 8];
     presentDates = presentDayNumbers.map((day) {
       return DateTime(currentYear, currentMonth, day);
     }).toList();
@@ -70,7 +67,7 @@ class _CalendarPageState extends State<ParentsAttendanceScreen> {
   void initializeCalendarCarousal() {
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       height: cHeight * 0.25,
-      weekendTextStyle: const TextStyle(
+      weekendTextStyle: TextStyle(
         color: Colors.red,
       ),
       weekFormat: true,
@@ -79,7 +76,6 @@ class _CalendarPageState extends State<ParentsAttendanceScreen> {
       markedDateShowIcon: true,
       markedDateIconMaxShown: 1,
       markedDateMoreShowTotal: null,
-      // null for not showing hidden events indicator
       markedDateIconBuilder: (event) {
         return event.icon;
       },
@@ -96,14 +92,15 @@ class _CalendarPageState extends State<ParentsAttendanceScreen> {
   @override
   Widget build(BuildContext context) {
     cHeight = MediaQuery.of(context).size.height;
-
-    /// You can move this to function initstate,
-    /// if you don't want the height from mediaquery
     initializeCalendarCarousal();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Calendar"),
+        title: CommonWidgets().textWidget(
+          text: "Calendar",
+          textWeight: FontWeight.bold,
+          textSize: 17.0,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -127,21 +124,19 @@ class _CalendarPageState extends State<ParentsAttendanceScreen> {
 
   static Widget _presentIcon(String day) => CircleAvatar(
         backgroundColor: Colors.green,
-        child: Text(
-          day,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
+        child: CommonWidgets().textWidget(
+          text: day,
+          textWeight: FontWeight.bold,
+          textSize: 17.0,
         ),
       );
 
   static Widget _absentIcon(String day) => CircleAvatar(
         backgroundColor: Colors.red,
-        child: Text(
-          day,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
+        child: CommonWidgets().textWidget(
+          text: day,
+          textWeight: FontWeight.bold,
+          textSize: 17.0,
         ),
       );
 
@@ -153,7 +148,11 @@ class _CalendarPageState extends State<ParentsAttendanceScreen> {
           radius: cHeight * 0.022,
         ),
         SizedBox(width: 5),
-        Text(data),
+        CommonWidgets().textWidget(
+          text: data,
+          textWeight: FontWeight.bold,
+          textSize: 15.0,
+        ),
       ],
     );
   }

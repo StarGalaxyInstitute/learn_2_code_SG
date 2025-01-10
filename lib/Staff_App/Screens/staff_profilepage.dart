@@ -293,13 +293,21 @@ class ProfileScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Choose an option"),
+        title: CommonWidgets().textWidget(
+          text: "Choose an option",
+          textWeight: FontWeight.bold,
+          textSize: 17.0,
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
               leading: Icon(Icons.camera_alt),
-              title: Text("Camera"),
+              title: CommonWidgets().textWidget(
+                text: "Camera",
+                textWeight: FontWeight.bold,
+                textSize: 17.0,
+              ),
               onTap: () async {
                 Navigator.pop(context);
                 await pickImage(ImageSource.camera);
@@ -307,7 +315,11 @@ class ProfileScreen extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.photo_library),
-              title: Text("Gallery"),
+              title: CommonWidgets().textWidget(
+                text: "Gallery",
+                textWeight: FontWeight.bold,
+                textSize: 17.0,
+              ),
               onTap: () async {
                 Navigator.pop(context);
                 await pickImage(ImageSource.gallery);

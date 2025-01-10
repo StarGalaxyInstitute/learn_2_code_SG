@@ -21,7 +21,6 @@ class ParentsRegister extends StatelessWidget {
             Image.asset('assets/images/login_img.png',
                 height: 200), // Replace with your image
             SizedBox(height: 20),
-
             InternationalPhoneNumberInput(
               onInputChanged: (PhoneNumber number) {
                 print(number.phoneNumber);
@@ -46,7 +45,11 @@ class ParentsRegister extends StatelessWidget {
                 print('On Saved: $number');
               },
             ),
-
+            SizedBox(height: 10),
+            TextField(
+                controller: controller.studentidcontroller,
+                decoration: InputDecoration(
+                    labelText: 'Student Id', border: OutlineInputBorder())),
             SizedBox(height: 20),
             GestureDetector(
               onTap: controller.verifyPhoneNumber,

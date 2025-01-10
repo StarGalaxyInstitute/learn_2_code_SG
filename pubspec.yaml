@@ -51,9 +51,10 @@ dependencies:
   intl:
   intl_phone_number_input: 
   syncfusion_flutter_datagrid: 
-  syncfusion_flutter_calendar:
   flutter_calendar_carousel:
-  table_calendar:
+  syncfusion_flutter_charts: 
+  flutter_staggered_grid_view:
+
 
 dev_dependencies:
   flutter_test:
