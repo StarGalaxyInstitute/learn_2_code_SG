@@ -8,6 +8,8 @@ import 'package:learn_to_code/Staff_App/Screens/staff_homepage.dart';
 import 'package:learn_to_code/Staff_App/Screens/staff_profilepage.dart';
 import 'package:navbar_router/navbar_router.dart';
 
+import '../../Constrant/common_widgets.dart';
+
 class StaffDashboard extends StatelessWidget {
   List<NavbarItem> items = [
     NavbarItem(Icons.home_outlined, 'Home',
@@ -44,36 +46,47 @@ class StaffDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavbarRouter(
-      errorBuilder: (context) {
-        return const Center(child: Text('Error 404'));
+    return WillPopScope(
+        onWillPop: () async {
+        final shouldPop = await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return CommonWidgets().willpopdialog();
+          },
+        );
+        return shouldPop!;
       },
-      onBackButtonPressed: (isExiting) {
-        return isExiting;
-      },
-      destinationAnimationCurve: Curves.fastOutSlowIn,
-      destinationAnimationDuration: 600,
-      type: NavbarType.floating,
-      decoration: NavbarDecoration(
-          navbarType: BottomNavigationBarType.fixed,
-          selectedLabelTextStyle: GoogleFonts.rubik(
-            fontWeight: FontWeight.w500,
-            color: AppColors.softBlue,
-          )),
-      destinations: [
-        for (int i = 0; i < items.length; i++)
-          DestinationRouter(
-            navbarItem: items[i],
-            destinations: [
-              for (int j = 0; j < _routes[i]!.keys.length; j++)
-                Destination(
-                  route: _routes[i]!.keys.elementAt(j),
-                  widget: _routes[i]!.values.elementAt(j),
-                ),
-            ],
-            initialRoute: _routes[i]!.keys.first,
-          ),
-      ],
+      child: NavbarRouter(
+        errorBuilder: (context) {
+          return const Center(child: Text('Error 404'));
+        },
+        onBackButtonPressed: (isExiting) {
+          return isExiting;
+        },
+        destinationAnimationCurve: Curves.fastOutSlowIn,
+        destinationAnimationDuration: 600,
+        type: NavbarType.floating,
+        decoration: NavbarDecoration(
+            navbarType: BottomNavigationBarType.fixed,
+            selectedLabelTextStyle: GoogleFonts.rubik(
+              fontWeight: FontWeight.w500,
+              color: AppColors.softBlue,
+            )),
+        destinations: [
+          for (int i = 0; i < items.length; i++)
+            DestinationRouter(
+              navbarItem: items[i],
+              destinations: [
+                for (int j = 0; j < _routes[i]!.keys.length; j++)
+                  Destination(
+                    route: _routes[i]!.keys.elementAt(j),
+                    widget: _routes[i]!.values.elementAt(j),
+                  ),
+              ],
+              initialRoute: _routes[i]!.keys.first,
+            ),
+        ],
+      ),
     );
   }
 }

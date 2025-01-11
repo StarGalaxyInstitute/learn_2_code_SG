@@ -18,184 +18,195 @@ class ParentsHomepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: CommonWidgets().textWidget(
-        text: "SGI Parents",
-        textWeight: FontWeight.bold,
-        textSize: 20.0,
-      )),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Lottie.asset(AppImage.images + "learn.json", height: 160),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: StaggeredGrid.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                children: [
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1.5,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(ParentsResultsScreen());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.blue.shade100,
-                            border: Border.all(width: 2, color: Colors.blue),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.blue,
-                              child: Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Image.asset(
-                                  color: AppColors.whitecolor,
-                                  AppImage.images + "result.png",
-                                  width: 70,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            CommonWidgets().textWidget(
-                              text: "Result",
-                              textWeight: FontWeight.bold,
-                              textSize: 20.0,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(ParentsAttendanceScreen());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.teal.shade100,
-                            border: Border.all(width: 2, color: Colors.teal),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.teal,
-                              child: Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Image.asset(
-                                  color: AppColors.whitecolor,
-                                  AppImage.images + "attendance.png",
-                                  width: 70,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            CommonWidgets().textWidget(
-                              text: "Attendance",
-                              textWeight: FontWeight.bold,
-                              textSize: 20.0,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1.5,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(ParentProgresschartScreen());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.deepPurple.shade100,
-                            border:
-                                Border.all(width: 2, color: Colors.deepPurple),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.deepPurple,
-                              child: Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Image.asset(
-                                  color: AppColors.whitecolor,
-                                  AppImage.images + "progress.png",
-                                  width: 70,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            CommonWidgets().textWidget(
-                              text: "Progress",
-                              textWeight: FontWeight.bold,
-                              textSize: 20.0,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(ParentsProfileScreen());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
-                            border: Border.all(width: 2, color: Colors.amber),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.amber,
-                              child: Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Image.asset(
-                                  color: AppColors.whitecolor,
-                                  AppImage.images + "user.png",
-                                  width: 70,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            CommonWidgets().textWidget(
-                              text: "Profile",
-                              textWeight: FontWeight.bold,
-                              textSize: 20.0,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+    return WillPopScope(
+        onWillPop: () async {
+        final shouldPop = await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return CommonWidgets().willpopdialog();
+          },
+        );
+        return shouldPop!;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+            title: CommonWidgets().textWidget(
+          text: "SGI Parents",
+          textWeight: FontWeight.bold,
+          textSize: 20.0,
+        )),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Lottie.asset(AppImage.images + "learn.json", height: 160),
+              SizedBox(
+                height: 20,
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: StaggeredGrid.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  children: [
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1.5,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(ParentsResultsScreen());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blue.shade100,
+                              border: Border.all(width: 2, color: Colors.blue),
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.blue,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Image.asset(
+                                    color: AppColors.whitecolor,
+                                    AppImage.images + "result.png",
+                                    width: 70,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              CommonWidgets().textWidget(
+                                text: "Result",
+                                textWeight: FontWeight.bold,
+                                textSize: 20.0,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(ParentsAttendanceScreen());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.teal.shade100,
+                              border: Border.all(width: 2, color: Colors.teal),
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.teal,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Image.asset(
+                                    color: AppColors.whitecolor,
+                                    AppImage.images + "attendance.png",
+                                    width: 70,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              CommonWidgets().textWidget(
+                                text: "Attendance",
+                                textWeight: FontWeight.bold,
+                                textSize: 20.0,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1.5,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(ParentProgresschartScreen());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.deepPurple.shade100,
+                              border:
+                                  Border.all(width: 2, color: Colors.deepPurple),
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.deepPurple,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Image.asset(
+                                    color: AppColors.whitecolor,
+                                    AppImage.images + "progress.png",
+                                    width: 70,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              CommonWidgets().textWidget(
+                                text: "Progress",
+                                textWeight: FontWeight.bold,
+                                textSize: 20.0,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(ParentsProfileScreen());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.amber.shade100,
+                              border: Border.all(width: 2, color: Colors.amber),
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.amber,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Image.asset(
+                                    color: AppColors.whitecolor,
+                                    AppImage.images + "user.png",
+                                    width: 70,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              CommonWidgets().textWidget(
+                                text: "Profile",
+                                textWeight: FontWeight.bold,
+                                textSize: 20.0,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

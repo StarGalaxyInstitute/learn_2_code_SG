@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_super_parameters, must_be_immutable
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learn_to_code/Constrant/common_widgets.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Screens/student_bookmarkpage.dart';
 import 'package:learn_to_code/Students_App/Screens/student_homepage.dart';
@@ -46,36 +49,47 @@ class StudentDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavbarRouter(
-      errorBuilder: (context) {
-        return const Center(child: Text('Error 404'));
+    return WillPopScope(
+      onWillPop: () async {
+        final shouldPop = await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return CommonWidgets().willpopdialog();
+          },
+        );
+        return shouldPop!;
       },
-      onBackButtonPressed: (isExiting) {
-        return isExiting;
-      },
-      destinationAnimationCurve: Curves.fastOutSlowIn,
-      destinationAnimationDuration: 600,
-      type: NavbarType.floating,
-      decoration: NavbarDecoration(
-          navbarType: BottomNavigationBarType.fixed,
-          selectedLabelTextStyle: GoogleFonts.rubik(
-            fontWeight: FontWeight.w500,
-            color: AppColors.softBlue,
-          )),
-      destinations: [
-        for (int i = 0; i < items.length; i++)
-          DestinationRouter(
-            navbarItem: items[i],
-            destinations: [
-              for (int j = 0; j < _routes[i]!.keys.length; j++)
-                Destination(
-                  route: _routes[i]!.keys.elementAt(j),
-                  widget: _routes[i]!.values.elementAt(j),
-                ),
-            ],
-            initialRoute: _routes[i]!.keys.first,
-          ),
-      ],
+      child: NavbarRouter(
+        errorBuilder: (context) {
+          return const Center(child: Text('Error 404'));
+        },
+        onBackButtonPressed: (isExiting) {
+          return isExiting;
+        },
+        destinationAnimationCurve: Curves.fastOutSlowIn,
+        destinationAnimationDuration: 600,
+        type: NavbarType.floating,
+        decoration: NavbarDecoration(
+            navbarType: BottomNavigationBarType.fixed,
+            selectedLabelTextStyle: GoogleFonts.rubik(
+              fontWeight: FontWeight.w500,
+              color: AppColors.softBlue,
+            )),
+        destinations: [
+          for (int i = 0; i < items.length; i++)
+            DestinationRouter(
+              navbarItem: items[i],
+              destinations: [
+                for (int j = 0; j < _routes[i]!.keys.length; j++)
+                  Destination(
+                    route: _routes[i]!.keys.elementAt(j),
+                    widget: _routes[i]!.values.elementAt(j),
+                  ),
+              ],
+              initialRoute: _routes[i]!.keys.first,
+            ),
+        ],
+      ),
     );
   }
 }

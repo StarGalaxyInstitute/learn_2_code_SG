@@ -33,6 +33,11 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: true,
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back),
+          //   onPressed: () => Get.back(),
+          // ),
           actions: [
             IconButton(
               icon: Icon(

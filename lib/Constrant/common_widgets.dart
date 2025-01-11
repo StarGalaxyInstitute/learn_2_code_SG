@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:lottie/lottie.dart';
@@ -23,7 +25,10 @@ class CommonWidgets {
       textAlign: textAlign,
       overflow: textoverFlow,
       style: GoogleFonts.rubik(
-          color: textColor, fontSize: textSize, fontWeight: textWeight,decoration: textdecoration),
+          color: textColor,
+          fontSize: textSize,
+          fontWeight: textWeight,
+          decoration: textdecoration),
     );
   }
 
@@ -46,6 +51,75 @@ class CommonWidgets {
             child: Lottie.asset(AppImage.icons + "loader.json",
                 frameRate: FrameRate(120), height: 100)),
       ),
+    );
+  }
+
+  Widget willpopdialog() {
+    return AlertDialog(
+      insetPadding: EdgeInsets.zero,
+      contentTextStyle: GoogleFonts.rubik(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      title: Text('Quit App?',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.rubik(fontWeight: FontWeight.bold)),
+      content: Text(
+        'Are you sure you want exit!',
+        textAlign: TextAlign.center,
+        style: GoogleFonts.rubik(
+            color: AppColors.greycolor, fontWeight: FontWeight.w600),
+      ),
+      actions: [
+        Row(
+          children: [
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  exit(1);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  height: 40,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.btnBlue),
+                  child: Center(
+                    child: CommonWidgets().textWidget(
+                        text: 'Yes',
+                        textColor: AppColors.whitecolor,
+                        textAlign: TextAlign.start,
+                        textSize: 14.0,
+                        textWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  height: 40,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.btnBlue),
+                  child: Center(
+                    child: CommonWidgets().textWidget(
+                        text: 'No',
+                        textColor: AppColors.whitecolor,
+                        textAlign: TextAlign.start,
+                        textSize: 14.0,
+                        textWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            )
+          ],
+        )
+      ],
     );
   }
 
