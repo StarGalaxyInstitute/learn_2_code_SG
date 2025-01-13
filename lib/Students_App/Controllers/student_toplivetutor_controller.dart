@@ -10,8 +10,6 @@ class Tutor {
   final String schoolyear;
   final String collageyear;
   final String schoolname;
-  final double hourlyRate;
-  final double discountedRate;
   final double rating;
   final int reviewscount;
   final List reviews;
@@ -25,10 +23,8 @@ class Tutor {
     required this.schoolyear,
     required this.collageyear,
     required this.schoolname,
-    required this.hourlyRate,
     required this.details,
     required this.subject,
-    required this.discountedRate,
     required this.rating,
     required this.reviews,
   });
@@ -45,8 +41,6 @@ class StudentToplivetutorController extends GetxController {
     Tutor(
       name: "Robert Fox",
       university: "University of Oxford",
-      hourlyRate: 30.0,
-      discountedRate: 49.0,
       rating: 4.5,
       details:
           "I'm Robert Fox, an architect passionate about teaching. As the lead instructor, I've helped many students and taught at top companies worldwide.",
@@ -75,8 +69,6 @@ class StudentToplivetutorController extends GetxController {
     Tutor(
       name: "Esther Howard",
       university: "University of Yorkshire",
-      hourlyRate: 28.0,
-      discountedRate: 40.0,
       rating: 4.5,
       details:
           "I'm Esther Howard, an architect passionate about teaching. As the lead instructor, I've helped many students and taught at top companies worldwide.",
@@ -105,8 +97,6 @@ class StudentToplivetutorController extends GetxController {
     Tutor(
       name: "Guy Hawkins",
       university: "University of London",
-      hourlyRate: 24.0,
-      discountedRate: 32.0,
       rating: 4.5,
        schooldegree: "SSC",
       collagedegree: "MSC",
@@ -135,8 +125,6 @@ class StudentToplivetutorController extends GetxController {
     Tutor(
       name: "Darrel Steward",
       university: "Københavns Universitet",
-      hourlyRate: 21.0,
-      discountedRate: 28.0,
       rating: 4.5,
        schooldegree: "SSC",
       collagedegree: "Engineering",
@@ -165,8 +153,6 @@ class StudentToplivetutorController extends GetxController {
     Tutor(
       name: "Guy Hawkins",
       university: "Aarhus Universitet",
-      hourlyRate: 30.0,
-      discountedRate: 36.0,
       rating: 4.5,
        schooldegree: "SSC",
       collagedegree: "Engineering",

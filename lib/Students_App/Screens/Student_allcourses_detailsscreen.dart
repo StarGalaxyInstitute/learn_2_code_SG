@@ -24,8 +24,6 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
         image: course.image,
         title: course.title,
         author: course.author,
-        price: course.price,
-        originalPrice: course.originalPrice,
         rating: course.rating,
         tag: course.tag,
         details: course.details); // Initialize it directly

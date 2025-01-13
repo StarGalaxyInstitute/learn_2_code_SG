@@ -156,37 +156,16 @@ class CourseCard extends StatelessWidget {
                 SizedBox(
                   height: 6,
                 ),
-                Row(
+                   Row(
                   children: [
-                    Row(
-                      children: [
-                        CommonWidgets().textWidget(
-                            text: course.price,
-                            textSize: 13.0,
-                            textAlign: TextAlign.start,
-                            textWeight: FontWeight.bold),
-                        SizedBox(width: 5),
-                        CommonWidgets().textWidget(
-                            text: course.originalPrice,
-                            textSize: 12.0,
-                            textdecoration: TextDecoration.lineThrough,
-                            textColor: AppColors.greycolor,
-                            textAlign: TextAlign.start,
-                            textWeight: FontWeight.w600),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.star, color: Colors.orange, size: 16),
-                        SizedBox(width: 5),
-                        CommonWidgets().textWidget(
-                            text: course.rating,
-                            textSize: 12.0,
-                            textColor: AppColors.greycolor,
-                            textAlign: TextAlign.start,
-                            textWeight: FontWeight.w400),
-                      ],
-                    ),
+                    Icon(Icons.star, color: Colors.orange, size: 16),
+                    SizedBox(width: 5),
+                    CommonWidgets().textWidget(
+                        text: course.rating,
+                        textSize: 12.0,
+                        textColor: AppColors.greycolor,
+                        textAlign: TextAlign.start,
+                        textWeight: FontWeight.w400),
                   ],
                 ),
                 if (course.tag.isNotEmpty)

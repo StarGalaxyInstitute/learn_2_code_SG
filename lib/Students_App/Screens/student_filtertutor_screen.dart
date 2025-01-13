@@ -207,27 +207,7 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
         SizedBox(height: 8),
         Ratingstar(),
         const SizedBox(height: 16),
-        // Hourly Rate Slider
-        CommonWidgets().textWidget(
-            text: 'Hourly Rate',
-            textAlign: TextAlign.start,
-            textSize: 14.0,
-            textWeight: FontWeight.bold),
-
-        Obx(() => RangeSlider(
-              values: controller.hourlyRate.value,
-              min: 0,
-              max: 50,
-              divisions: 50,
-              activeColor: AppColors.darkBlue,
-              labels: RangeLabels(
-                '\$${controller.hourlyRate.value.start.toInt()}',
-                '\$${controller.hourlyRate.value.end.toInt()}',
-              ),
-              onChanged: (values) => controller.hourlyRate.value = values,
-            )),
-        const SizedBox(height: 16),
-        // Action Buttons
+              // Action Buttons
         Row(
           children: [
             Expanded(
@@ -295,26 +275,6 @@ class _StudentFiltertutorScreenState extends State<StudentFiltertutorScreen> {
 
         SizedBox(height: 8),
         Ratingstar(),
-        SizedBox(height: 16),
-        // Hourly Rate Slider
-        CommonWidgets().textWidget(
-            text: 'Price Range',
-            textAlign: TextAlign.start,
-            textSize: 14.0,
-            textWeight: FontWeight.bold),
-
-        Obx(() => RangeSlider(
-              values: controller.hourlyRate.value,
-              min: 0,
-              max: 50,
-              divisions: 50,
-              activeColor: AppColors.darkBlue,
-              labels: RangeLabels(
-                '\$${controller.hourlyRate.value.start.toInt()}',
-                '\$${controller.hourlyRate.value.end.toInt()}',
-              ),
-              onChanged: (values) => controller.hourlyRate.value = values,
-            )),
         SizedBox(height: 16),
         CommonWidgets().textWidget(
             text: 'Duration',

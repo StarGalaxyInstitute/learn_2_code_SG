@@ -9,7 +9,6 @@ class StudentLivesubjectTutoringController extends GetxController {
           "assets/images/javascript.png",
       "tutor": "John Doe",
       "rating": "4.8",
-      "price": "\$15.99"
     },
     {
       "subject": "Python Programming",
@@ -18,7 +17,6 @@ class StudentLivesubjectTutoringController extends GetxController {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqCV_Esm0MpYTJEy8d5XqtzEDUFre-D_1g&s",
       "tutor": "Alice Smith",
       "rating": "4.7",
-      "price": "\$19.99"
     },
     {
       "subject": "Web Development",
@@ -27,7 +25,6 @@ class StudentLivesubjectTutoringController extends GetxController {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6_ABCmpYTJEy8d5XqtzEDUFre-D_1g&s",
       "tutor": "Michael Brown",
       "rating": "4.9",
-      "price": "\$22.99"
     },
   ];
 }

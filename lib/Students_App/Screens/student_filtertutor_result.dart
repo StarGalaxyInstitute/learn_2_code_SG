@@ -152,23 +152,6 @@ class TutorCard extends StatelessWidget {
                 ],
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                CommonWidgets().textWidget(
-                    text: '\$${tutor.hourlyRate}/hr',
-                    textColor: AppColors.btnBlue,
-                    textAlign: TextAlign.start,
-                    textSize: 15.0,
-                    textWeight: FontWeight.w500),
-                CommonWidgets().textWidget(
-                    text: '\$${tutor.oldRate}',
-                    textColor: AppColors.greycolor,
-                    textSize: 13.0,
-                    textAlign: TextAlign.start,
-                    textWeight: FontWeight.w500),
-              ],
-            ),
           ],
         ),
       ),

@@ -89,8 +89,6 @@ class StudentWeeklyTopLiveTutorsListScreen extends StatelessWidget {
                   child: liveTutorWidget(
                       name: tutor.name,
                       university: tutor.university,
-                      discountedRate: tutor.discountedRate,
-                      hourlyRate: tutor.hourlyRate,
                       rating: tutor.rating,
                       reviewscount: tutor.reviewscount),
                 );
@@ -103,8 +101,7 @@ class StudentWeeklyTopLiveTutorsListScreen extends StatelessWidget {
   }
 }
 
-Widget liveTutorWidget(
-    {name, university, rating, reviewscount, hourlyRate, discountedRate}) {
+Widget liveTutorWidget({name, university, rating, reviewscount}) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
     padding: EdgeInsets.all(11),
@@ -152,24 +149,6 @@ Widget liveTutorWidget(
               ),
             ],
           ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            CommonWidgets().textWidget(
-                text: '\$${hourlyRate}/hr',
-                textSize: 13.0,
-                textColor: AppColors.btnBlue,
-                textAlign: TextAlign.start,
-                textWeight: FontWeight.bold),
-            CommonWidgets().textWidget(
-                text: '\$${discountedRate}',
-                textSize: 11.0,
-                textColor: AppColors.greycolor,
-                textdecoration: TextDecoration.lineThrough,
-                textAlign: TextAlign.start,
-                textWeight: FontWeight.w500),
-          ],
         ),
       ],
     ),

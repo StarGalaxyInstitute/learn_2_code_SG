@@ -130,7 +130,6 @@ class StudentHomepage extends StatelessWidget {
                                     child: trendingCourseWidget(
                                       name: course.title,
                                       author: course.author,
-                                      price: course.price,
                                       rating: course.rating,
                                     ),
                                   );
@@ -224,7 +223,6 @@ class StudentHomepage extends StatelessWidget {
                                     child: trendingCourseWidget(
                                       name: course.title,
                                       author: course.author,
-                                      price: course.price,
                                       rating: course.rating,
                                     ),
                                   );
@@ -312,7 +310,7 @@ class StudentHomepage extends StatelessWidget {
     );
   }
 
-  Widget trendingCourseWidget({name, author, price, rating}) {
+  Widget trendingCourseWidget({name, author, rating}) {
     return Container(
       width: Get.width * 0.45,
       margin: EdgeInsets.all(5),
@@ -352,8 +350,6 @@ class StudentHomepage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CommonWidgets().textWidget(
-                  text: price, textSize: 14.0, textWeight: FontWeight.w600),
               CommonWidgets().textWidget(
                   text: "⭐${rating}",
                   textSize: 12.0,

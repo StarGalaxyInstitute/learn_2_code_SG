@@ -11,7 +11,6 @@ class StudentFiltertutorcontroller extends GetxController {
   var experience = '1-3 Years'.obs;
   var degree = "Master's in Applied Mathematics".obs;
   var rating = 3.obs;
-  var hourlyRate = RangeValues(12, 29).obs;
   bool isfilterTab = true;
 
   var selectedCategory = "Programming".obs;
@@ -38,6 +37,5 @@ class StudentFiltertutorcontroller extends GetxController {
     experience.value = '1-3 Years';
     degree.value = "Master's in Applied Mathematics";
     rating.value = 3;
-    hourlyRate.value = RangeValues(12, 29);
   }
 }

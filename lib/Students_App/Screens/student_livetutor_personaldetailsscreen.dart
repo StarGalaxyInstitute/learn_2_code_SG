@@ -26,22 +26,6 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
       );
     }
     return Scaffold(
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        height: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: AppColors.btnBlue,
-        ),
-        child: Center(
-          child: CommonWidgets().textWidget(
-              text: "Book Me",
-              textSize: 16.0,
-              textColor: AppColors.whitecolor,
-              textAlign: TextAlign.center,
-              textWeight: FontWeight.bold),
-        ),
-      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
@@ -113,24 +97,6 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            CommonWidgets().textWidget(
-                                text: '\$${tutor.hourlyRate}/hr',
-                                textSize: 13.0,
-                                textColor: AppColors.btnBlue,
-                                textAlign: TextAlign.start,
-                                textWeight: FontWeight.bold),
-                            CommonWidgets().textWidget(
-                                text: '\$${tutor.discountedRate}',
-                                textSize: 11.0,
-                                textColor: AppColors.greycolor,
-                                textdecoration: TextDecoration.lineThrough,
-                                textAlign: TextAlign.start,
-                                textWeight: FontWeight.w500),
-                          ],
                         ),
                       ],
                     ),

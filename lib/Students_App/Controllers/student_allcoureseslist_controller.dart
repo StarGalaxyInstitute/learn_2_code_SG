@@ -145,8 +145,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Introduction to Photography and Editing',
         author: 'Eleanor Pena · 3 hr',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Bestseller',
         details:
@@ -156,8 +154,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Advanced Front-End Programming Techniques',
         author: 'Julia Anatole · 1 hr',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Top Author',
         details:
@@ -167,8 +163,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Artificial Intelligence with Python',
         author: 'Jenny Wilson · 1:30 hr',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Editors Choice',
         details:
@@ -178,8 +172,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Ultimate Cybersecurity Fundamental for Beginners',
         author: 'Jacob Jones · 3:30 hr',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Editors Choice',
         details:
@@ -189,8 +181,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Cooking Gourmet Meals at Home',
         author: 'Cameron Williamson · 2 hr',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Editors Choice',
         details:
@@ -200,8 +190,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Creative Writing, From Idea to Manuscript',
         author: 'Kristin Watson · 50 m',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Most Popular',
         details:
@@ -211,8 +199,6 @@ class StudentAllcoureseslistController extends GetxController {
         image: 'assets/images/python.png',
         title: 'Personal Finance Management Essentials',
         author: 'Arlene McCoy · 30 m',
-        price: '\$10.99',
-        originalPrice: '\$32',
         rating: '4.5 (2,980)',
         tag: 'Top Author',
         details:
