@@ -14,7 +14,7 @@ class StaffShortvideosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-           backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: 'Short Videos',
@@ -149,8 +149,15 @@ class ShortVideoCard extends StatelessWidget {
                   ),
                 ),
                 Center(
-                  child: Icon(Icons.play_circle_fill,
-                      size: 40, color: Colors.white),
+                  child: SizedBox(
+                    height: 180,
+                    // color: Colors.red,
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Icon(Icons.play_circle_fill,
+                          size: 40, color: Colors.white),
+                    ),
+                  ),
                 ),
               ],
             ),
