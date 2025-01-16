@@ -1,4 +1,5 @@
-import 'dart:convert';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
@@ -15,7 +16,7 @@ class ItemData {
 class StudentAllcoureseslistController extends GetxController {
   var selectedTutor = Rxn<StudentCoures>();
   RxInt selectedIndex = 0.obs;
-  var favoriteCourses = <StudentCoures>[].obs; // Observable list for favorites
+  RxList<String> favoriteCourses = <String>[].obs;
 
   void selectTutor(StudentCoures tutor) {
     selectedTutor.value = tutor;
@@ -24,7 +25,7 @@ class StudentAllcoureseslistController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadFavorites();
+    _loadFavorites();
   }
 
   List<ItemData> iconlist = [
@@ -135,37 +136,19 @@ class StudentAllcoureseslistController extends GetxController {
             'The Advanced Front-End Programming course sharpens students critical thinking, creativity, and analytical skills, empowering them to effectively tackle complex challenges in web development.'),
   ].obs;
 
-  Future<void> loadFavorites() async {
+  void _loadFavorites() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? favoritesData = prefs.getString('favoriteCourses');
-    if (favoritesData != null) {
-      List<dynamic> jsonList = jsonDecode(favoritesData);
-      for (var course in courses) {
-        course.isFavorite =
-            jsonList.any((item) => item['title'] == course.title);
-      }
-    }
-    favoriteCourses.value = courses.where((c) => c.isFavorite).toList();
-    update();
+    List<String> savedFavorites = prefs.getStringList('favorite_courses') ?? [];
+    favoriteCourses.addAll(savedFavorites);
   }
 
-  Future<void> saveFavorites() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<Map<String, dynamic>> favorites = courses
-        .where((course) => course.isFavorite)
-        .map((course) => course.toJson())
-        .toList();
-    prefs.setString('favoriteCourses', jsonEncode(favorites));
-  }
-
-  void toggleFavorite(StudentCoures course) {
-    course.isFavorite = !course.isFavorite;
-    // Ensure we update selectedTutor if the course is the selected one
-    if (selectedTutor.value == course) {
-      selectedTutor.value = course;
+  void toggleFavorite(String course) async {
+    if (favoriteCourses.contains(course)) {
+      favoriteCourses.remove(course);
+    } else {
+      favoriteCourses.add(course);
     }
-    favoriteCourses.value = courses.where((c) => c.isFavorite).toList();
-    saveFavorites();
-    update(); // Ensure the UI is refreshed
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('favorite_courses', favoriteCourses);
   }
 }

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print, must_be_immutable, unused_local_variable, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -223,21 +223,6 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                       date: '16 Feb 2024',
                       feedback:
                           'Robert Foxs teaching is outstanding. He makes learning complex topics simple and enjoyable.'),
-
-                  // Expanded(
-                  //   child: ListView.builder(
-                  //     itemCount: tutor.reviews.length,
-                  //     itemBuilder: (context, index) {
-                  //       final review = tutor.reviews[index];
-                  //       return GestureDetector(
-                  //         child: liveTutorWidget(
-                  //             name: review["name"],
-                  //             date: review["date"],
-                  //             feedback: review["feedback"]),
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
                 ],
               ),
             ),

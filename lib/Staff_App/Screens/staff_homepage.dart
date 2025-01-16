@@ -1,10 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_key_in_widget_constructors, avoid_print
-
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learn_to_code/Staff_App/Screens/staff_allcourses_Screen.dart';
 import 'package:learn_to_code/Staff_App/Screens/staff_studentslists_Page.dart';
@@ -15,7 +12,6 @@ import '../Controllers/staff_home_controller.dart';
 import '../Controllers/staff_shortvideos_controller.dart';
 import '../Controllers/staff_teacherslist_controller.dart';
 import 'staff_attendance_sheet_screen.dart';
-import 'staff_dashboard.dart';
 import 'staff_popularteacherslist_screen.dart';
 import 'staff_shortvideos_screen.dart';
 import 'staff_teacherpersonal_details_page.dart';

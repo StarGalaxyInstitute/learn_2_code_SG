@@ -31,21 +31,21 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Obx(
-            () => IconButton(
+          Obx(() {
+            return IconButton(
               icon: Icon(
-                controller.selectedTutor.value?.isFavorite ?? false
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: Colors.red,
+                controller.favoriteCourses.contains(title)
+                    ? Icons.bookmark_add_rounded
+                    : Icons.bookmark_add_outlined,
+                color: controller.favoriteCourses.contains(title)
+                    ? Colors.red
+                    : Colors.grey,
               ),
               onPressed: () {
-                if (controller.selectedTutor.value != null) {
-                  controller.toggleFavorite(controller.selectedTutor.value!);
-                }
+                controller.toggleFavorite(title);
               },
-            ),
-          ),
+            );
+          }),
         ],
         automaticallyImplyLeading: true,
         backgroundColor: Colors.transparent,

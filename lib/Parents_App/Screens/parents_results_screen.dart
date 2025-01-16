@@ -1,12 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-
 import '../../Constrant/common_widgets.dart';
 import '../../Constrant/utilities.dart';
-import '../Controllers/parents_home_controller.dart';
 import '../Controllers/parents_result_controller.dart';
 import 'parents_monthresultsscreen.dart';
 

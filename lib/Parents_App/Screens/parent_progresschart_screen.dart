@@ -1,7 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import '../../Constrant/common_widgets.dart';
 import '../Controllers/parents_progress_controller.dart';
 

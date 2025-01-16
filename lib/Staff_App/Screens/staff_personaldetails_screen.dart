@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import '../../Constrant/common_widgets.dart';
 import '../Controllers/staff_profile_controller.dart';
 import 'staff_dashboard.dart';
-import 'staff_profilepage.dart';
-
 class PersonalDetailsScreen extends StatelessWidget {
   final ProfileController profileController = Get.find();
 
