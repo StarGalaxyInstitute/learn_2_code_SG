@@ -79,6 +79,7 @@ class ParentsHomepage extends StatelessWidget {
                               SizedBox(height: 10),
                               CommonWidgets().textWidget(
                                 text: "Result",
+                                textColor: AppColors.blackcolor,
                                 textWeight: FontWeight.bold,
                                 textSize: 20.0,
                               )
@@ -117,6 +118,7 @@ class ParentsHomepage extends StatelessWidget {
                               SizedBox(height: 10),
                               CommonWidgets().textWidget(
                                 text: "Attendance",
+                                textColor: AppColors.blackcolor,
                                 textWeight: FontWeight.bold,
                                 textSize: 20.0,
                               )
@@ -156,6 +158,7 @@ class ParentsHomepage extends StatelessWidget {
                               SizedBox(height: 10),
                               CommonWidgets().textWidget(
                                 text: "Progress",
+                                textColor: AppColors.blackcolor,
                                 textWeight: FontWeight.bold,
                                 textSize: 20.0,
                               )
@@ -194,6 +197,7 @@ class ParentsHomepage extends StatelessWidget {
                               SizedBox(height: 10),
                               CommonWidgets().textWidget(
                                 text: "Profile",
+                                textColor: AppColors.blackcolor,
                                 textWeight: FontWeight.bold,
                                 textSize: 20.0,
                               )
