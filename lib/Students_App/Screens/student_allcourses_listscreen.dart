@@ -46,7 +46,13 @@ class StudentAllcoursesListscreen extends StatelessWidget {
                 return GestureDetector(
                     onTap: () {
                       controller.selectTutor(course);
-                      Get.to(() => StudentAllCoursesDetailsScreen());
+                      Get.to(() => StudentAllCoursesDetailsScreen(
+                          image: course.image,
+                          title: course.title,
+                          author: course.author,
+                          rating: course.rating,
+                          tag: course.tag,
+                          details: course.details));
                     },
                     child: CourseCard(course: course));
               },
@@ -156,7 +162,7 @@ class CourseCard extends StatelessWidget {
                 SizedBox(
                   height: 6,
                 ),
-                   Row(
+                Row(
                   children: [
                     Icon(Icons.star, color: Colors.orange, size: 16),
                     SizedBox(width: 5),

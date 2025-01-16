@@ -17,7 +17,7 @@ class StaffPopularteacherslistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-           backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
             text: 'Popular Teachers',
@@ -98,7 +98,17 @@ class StaffPopularteacherslistScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         teacherController.selectIndex(teacher);
-                        Get.to(StaffTeacherpersonalDetailsPage());
+                        Get.to(StaffTeacherpersonalDetailsPage(
+                          name: teacher.name,
+                          subject: teacher.subject,
+                          location: teacher.location,
+                          subjects: teacher.subjects,
+                          about: teacher.about,
+                          graduation: teacher.graduation,
+                          rating: teacher.rating,
+                          reviews: teacher.reviews,
+                          salary: teacher.salary,
+                        ));
                       },
                       child: Container(
                         width: 60,

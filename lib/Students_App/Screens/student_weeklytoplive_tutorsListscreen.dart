@@ -84,7 +84,18 @@ class StudentWeeklyTopLiveTutorsListScreen extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     tutorController.selectTutor(tutor);
-                    Get.to(() => StudentLiveTutorPersonalDetailsScreen());
+                    Get.to(() => StudentLiveTutorPersonalDetailsScreen(
+                          name: tutor.name,
+                          university: tutor.university,
+                          rating: tutor.rating,
+                          reviewscount: tutor.reviewscount,
+                          details: tutor.details,
+                          collagedegree: tutor.collagedegree,
+                          collageyear: tutor.collageyear,
+                          schooldegree: tutor.schooldegree,
+                          schoolname: tutor.schoolname,
+                          schoolyear: tutor.schoolyear,
+                        ));
                   },
                   child: liveTutorWidget(
                       name: tutor.name,

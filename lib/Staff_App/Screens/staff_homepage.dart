@@ -240,7 +240,17 @@ class StaffHomepage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     teacherController.selectIndex(teacher);
-                    Get.to(StaffTeacherpersonalDetailsPage());
+                    Get.to(StaffTeacherpersonalDetailsPage(
+                      name: teacher.name,
+                      subject: teacher.subject,
+                      location: teacher.location,
+                      subjects: teacher.subjects,
+                      about: teacher.about,
+                      graduation: teacher.graduation,
+                      rating: teacher.rating,
+                      reviews: teacher.reviews,
+                      salary: teacher.salary,
+                    ));
                   },
                   child: Container(
                     width: 60,

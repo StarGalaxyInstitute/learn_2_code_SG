@@ -16,48 +16,56 @@ final StudentAllcoureseslistController controller =
     Get.put(StudentAllcoureseslistController());
 
 class StudentAllCoursesDetailsScreen extends StatelessWidget {
+  String image;
+  String title;
+  String author;
+  String rating;
+  String tag;
+  String details;
+
+  StudentAllCoursesDetailsScreen(
+      {required this.image,
+      required this.title,
+      required this.author,
+      required this.rating,
+      required this.tag,
+      required this.details});
+
   @override
   Widget build(BuildContext context) {
-    final course = controller.selectedTutor.value;
-    final StudentCoures item = StudentCoures(
-        id: course!.id,
-        image: course.image,
-        title: course.title,
-        author: course.author,
-        rating: course.rating,
-        tag: course.tag,
-        details: course.details); // Initialize it directly
-
-    return Obx(
-      () => Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          // leading: IconButton(
-          //   icon: Icon(Icons.arrow_back),
-          //   onPressed: () => Get.back(),
-          // ),
-          actions: [
-            IconButton(
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Obx(
+            () => IconButton(
               icon: Icon(
-                controller.isFavorite(item.id)
-                    ? Icons.bookmark
-                    : Icons.bookmark_border,
+                controller.selectedTutor.value?.isFavorite ?? false
+                    ? Icons.favorite
+                    : Icons.favorite_border,
                 color: Colors.red,
               ),
               onPressed: () {
-                controller.toggleFavorite(item.id);
+                if (controller.selectedTutor.value != null) {
+                  controller.toggleFavorite(controller.selectedTutor.value!);
+                  controller.favoriteCourses.value =
+                      controller.courses.where((c) => c.isFavorite).toList();
+                  controller.loadFavorites();
+                }
               },
-            )
-          ],
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-          title: CommonWidgets().textWidget(
-              text: 'About Courses',
-              textSize: 16.0,
-              textAlign: TextAlign.start,
-              textWeight: FontWeight.bold),
-        ),
-        body: course == null
+            ),
+          ),
+        ],
+        automaticallyImplyLeading: true,
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        title: CommonWidgets().textWidget(
+            text: 'About Courses',
+            textSize: 16.0,
+            textAlign: TextAlign.start,
+            textWeight: FontWeight.bold),
+      ),
+      body: Obx(() {
+        return controller.selectedTutor.value == null
             ? Center(
                 child: CommonWidgets().textWidget(
                     text: "No Courses selected",
@@ -74,22 +82,20 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          course.image,
+                          image,
                           fit: BoxFit.cover,
                           height: 160,
                           width: double.infinity,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                       CommonWidgets().textWidget(
-                          text: course.title,
+                          text: title,
                           textSize: 15.0,
                           textAlign: TextAlign.start,
                           textWeight: FontWeight.bold),
                       CommonWidgets().textWidget(
-                          text: course.author,
+                          text: author,
                           textSize: 13.0,
                           textColor: AppColors.greycolor,
                           textAlign: TextAlign.start,
@@ -98,19 +104,19 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          if (course.tag.isNotEmpty)
+                          if (tag.isNotEmpty)
                             Container(
                               margin: EdgeInsets.only(top: 6),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 3),
                               decoration: BoxDecoration(
-                                color: course.tag == 'Top Author'
+                                color: tag == 'Top Author'
                                     ? Colors.purple[100]
                                     : Colors.green[100],
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: CommonWidgets().textWidget(
-                                  text: course.tag,
+                                  text: tag,
                                   textSize: 11.0,
                                   textColor: AppColors.blackcolor,
                                   textAlign: TextAlign.start,
@@ -118,14 +124,10 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
                             ),
                           Row(
                             children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.orange,
-                                size: 16,
-                              ),
+                              Icon(Icons.star, color: Colors.orange, size: 16),
                               SizedBox(width: 4),
                               CommonWidgets().textWidget(
-                                  text: course.rating,
+                                  text: rating,
                                   textSize: 14.0,
                                   textColor: AppColors.greycolor,
                                   textAlign: TextAlign.start,
@@ -134,18 +136,14 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                       CommonWidgets().textWidget(
-                          text: course.details,
+                          text: details,
                           textSize: 11.0,
                           textColor: AppColors.greycolor,
                           textAlign: TextAlign.start,
                           textWeight: FontWeight.w500),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      SizedBox(height: 20),
                       Row(
                         children: [
                           Expanded(
@@ -239,8 +237,8 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-      ),
+              );
+      }),
     );
   }
 }
@@ -251,17 +249,13 @@ Widget About() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         CommonWidgets().textWidget(
             text: 'What this Course Includes',
             textSize: 15.0,
             textAlign: TextAlign.start,
             textWeight: FontWeight.w600),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         CarouselSlider.builder(
           options: CarouselOptions(
               autoPlay: true, aspectRatio: 16 / 2.5, enlargeCenterPage: true),
@@ -279,9 +273,7 @@ Widget About() {
                   Container(
                     child: course.icon,
                   ),
-                  SizedBox(
-                    width: 20,
-                  ),
+                  SizedBox(width: 20),
                   CommonWidgets().textWidget(
                       text: course.name,
                       textSize: 12.0,
@@ -293,17 +285,13 @@ Widget About() {
             );
           },
         ),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         CommonWidgets().textWidget(
             text: 'Course Materials',
             textSize: 15.0,
             textAlign: TextAlign.start,
             textWeight: FontWeight.w600),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
@@ -373,15 +361,13 @@ Widget Author() {
         margin: EdgeInsets.symmetric(vertical: 10),
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-        ),
+            color: Colors.transparent, borderRadius: BorderRadius.circular(12)),
         child: Row(
           children: [
             CircleAvatar(
               radius: 30,
               backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rpCV_Esm0MpYTJEy8d5XqtzEDUFre-D_1g&s'), // Replace with avatar image URL
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rpCV_Esm0MpYTJEy8d5XqtzEDUFre-D_1g&s'),
             ),
             SizedBox(width: 16),
             Expanded(
@@ -401,11 +387,7 @@ Widget Author() {
                       textWeight: FontWeight.w500),
                   Row(
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                        size: 16,
-                      ),
+                      Icon(Icons.star, color: Colors.orange, size: 16),
                       SizedBox(width: 4),
                       CommonWidgets().textWidget(
                           text: '4.5 (39)',
@@ -421,14 +403,8 @@ Widget Author() {
           ],
         ),
       ),
-      Container(
-        color: AppColors.btnborder,
-        height: 1,
-        width: double.infinity,
-      ),
-      SizedBox(
-        height: 5,
-      ),
+      Container(color: AppColors.btnborder, height: 1, width: double.infinity),
+      SizedBox(height: 5),
       CommonWidgets().textWidget(
           text:
               'I am Julia, an developer passionate about teaching. As the lead instructor, I have helped many students and taught at top companies worldwide.',
@@ -449,10 +425,8 @@ Widget Author() {
               leading: CircleAvatar(
                 radius: 20,
                 backgroundColor: const Color.fromARGB(255, 230, 216, 255),
-                child: Icon(
-                  Icons.school_outlined,
-                  color: Colors.deepPurpleAccent,
-                ),
+                child:
+                    Icon(Icons.school_outlined, color: Colors.deepPurpleAccent),
               ),
               title: CommonWidgets().textWidget(
                   text: 'Engineering',
@@ -472,20 +446,16 @@ Widget Author() {
                   textWeight: FontWeight.bold),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
-              color: AppColors.btnborder,
-              height: 1,
-              width: double.infinity,
-            ),
+                margin: EdgeInsets.symmetric(vertical: 5),
+                color: AppColors.btnborder,
+                height: 1,
+                width: double.infinity),
             ListTile(
               minTileHeight: 0,
               leading: CircleAvatar(
                 radius: 20,
                 backgroundColor: const Color.fromARGB(255, 225, 245, 255),
-                child: Icon(
-                  Icons.school_outlined,
-                  color: Colors.lightBlue,
-                ),
+                child: Icon(Icons.school_outlined, color: Colors.lightBlue),
               ),
               title: CommonWidgets().textWidget(
                   text: 'SSC',
@@ -525,13 +495,10 @@ Widget liveTutorWidget({name, date, feedback}) {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(
-              radius: 20,
-              backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rpCV_Esm0MpYTJEy8d5XqtzEDUFre-D_1g&s'), // Replace with avatar image URL
-            ),
-            SizedBox(
-              width: 15,
-            ),
+                radius: 20,
+                backgroundImage: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rpCV_Esm0MpYTJEy8d5XqtzEDUFre-D_1g&s')),
+            SizedBox(width: 15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -551,17 +518,13 @@ Widget liveTutorWidget({name, date, feedback}) {
                       glow: false,
                       itemCount: 5,
                       itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
+                      itemBuilder: (context, _) =>
+                          Icon(Icons.star, color: Colors.amber),
                       onRatingUpdate: (rating) {
                         print(rating);
                       },
                     ),
-                    SizedBox(
-                      width: 15,
-                    ),
+                    SizedBox(width: 15),
                     CommonWidgets().textWidget(
                         text: date,
                         textSize: 14.0,
@@ -573,9 +536,7 @@ Widget liveTutorWidget({name, date, feedback}) {
             )
           ],
         ),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         CommonWidgets().textWidget(
             text: feedback,
             textSize: 12.0,

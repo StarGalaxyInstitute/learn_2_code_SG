@@ -7,12 +7,34 @@ import '../../Constrant/common_widgets.dart';
 import '../Controllers/staff_teacherslist_controller.dart';
 
 class StaffTeacherpersonalDetailsPage extends StatelessWidget {
+  String name;
+  String subject;
+  String location;
+  String subjects;
+  String rating;
+  String reviews;
+  String salary;
+  String graduation;
+  String about;
+
+  StaffTeacherpersonalDetailsPage(
+      {required this.name,
+      required this.subject,
+      required this.location,
+      required this.subjects,
+      required this.rating,
+      required this.reviews,
+      required this.salary,
+      required this.graduation,
+      required this.about,
+    });
+
   final StaffTeacherslistController teacherController =
       Get.put(StaffTeacherslistController());
 
   @override
   Widget build(BuildContext context) {
-    final tutor = teacherController.selectedTutor.value;
+    // final tutor = teacherController.selectedTutor.value;
 
     return Scaffold(
       appBar: AppBar(
@@ -52,7 +74,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CommonWidgets().textWidget(
-                          text: tutor!.name,
+                          text: name,
                           textSize: 17.0,
                           textAlign: TextAlign.start,
                           textWeight: FontWeight.bold),
@@ -62,7 +84,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
                               color: Colors.orange, size: 18.0),
                           CommonWidgets().textWidget(
                               text:
-                                  '${tutor.rating} (${tutor.reviews} Reviews)',
+                                  '${rating} (${reviews} Reviews)',
                               textSize: 14.0,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.w400),
@@ -78,7 +100,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
                           textAlign: TextAlign.start,
                           textWeight: FontWeight.bold),
                       CommonWidgets().textWidget(
-                          text: '${tutor.salary} Tk',
+                          text: '${salary} Tk',
                           textSize: 13.0,
                           textAlign: TextAlign.start,
                           textWeight: FontWeight.w400),
@@ -95,7 +117,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
                   const Icon(Icons.book, size: 18.0, color: Colors.grey),
                   const SizedBox(width: 8.0),
                   CommonWidgets().textWidget(
-                      text: tutor.subject,
+                      text: subject,
                       textSize: 13.0,
                       textAlign: TextAlign.start,
                       textWeight: FontWeight.bold),
@@ -107,7 +129,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
                   const Icon(Icons.school, size: 18.0, color: Colors.grey),
                   const SizedBox(width: 8.0),
                   CommonWidgets().textWidget(
-                      text: tutor.graduation,
+                      text: graduation,
                       textSize: 13.0,
                       textAlign: TextAlign.start,
                       textWeight: FontWeight.bold),
@@ -119,7 +141,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
                   const Icon(Icons.location_on, size: 18.0, color: Colors.grey),
                   const SizedBox(width: 8.0),
                   CommonWidgets().textWidget(
-                      text: tutor.location,
+                      text: location,
                       textSize: 13.0,
                       textAlign: TextAlign.start,
                       textWeight: FontWeight.bold),
@@ -137,7 +159,7 @@ class StaffTeacherpersonalDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 8.0),
               CommonWidgets().textWidget(
-                  text: tutor.about,
+                  text: about,
                   textSize: 13.0,
                   textAlign: TextAlign.start,
                   textWeight: FontWeight.w500),

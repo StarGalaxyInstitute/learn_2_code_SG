@@ -8,34 +8,47 @@ import '../../Constrant/common_widgets.dart';
 import '../Controllers/student_toplivetutor_controller.dart';
 
 class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
+  String name;
+  String university;
+  String details;
+  String collagedegree;
+  String collageyear;
+  String schooldegree;
+  String schoolname;
+  String schoolyear;
+  double rating;
+  int reviewscount;
+
+  StudentLiveTutorPersonalDetailsScreen(
+      {required this.name,
+      required this.university,
+      required this.rating,
+      required this.reviewscount,
+      required this.details,
+      required this.collagedegree,
+      required this.collageyear,
+      required this.schooldegree,
+      required this.schoolname,
+      required this.schoolyear});
+
   final StudentToplivetutorController tutorController =
       Get.put(StudentToplivetutorController());
 
   @override
   Widget build(BuildContext context) {
     final tutor = tutorController.selectedTutor.value;
-    if (tutor == null) {
-      return Scaffold(
-        body: Center(
-          child: CommonWidgets().textWidget(
-              text: "No tutor selected",
-              textSize: 16.0,
-              textAlign: TextAlign.start,
-              textWeight: FontWeight.bold),
-        ),
-      );
-    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         title: CommonWidgets().textWidget(
-            text: tutor.name,
+            text: name,
             textSize: 16.0,
             textAlign: TextAlign.start,
             textWeight: FontWeight.bold),
       ),
-      body: tutor == null
+      body: name == null
           ? Center(
               child: CommonWidgets().textWidget(
                   text: "No tutor selected",
@@ -68,12 +81,12 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CommonWidgets().textWidget(
-                                  text: tutor.name,
+                                  text: name,
                                   textSize: 15.0,
                                   textAlign: TextAlign.start,
                                   textWeight: FontWeight.bold),
                               CommonWidgets().textWidget(
-                                  text: tutor.university,
+                                  text: university,
                                   textSize: 13.0,
                                   textColor: AppColors.greycolor,
                                   textAlign: TextAlign.start,
@@ -87,8 +100,7 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 4),
                                   CommonWidgets().textWidget(
-                                      text:
-                                          '${tutor.rating} (${tutor.reviewscount})',
+                                      text: '${rating} (${reviewscount})',
                                       textSize: 14.0,
                                       textColor: AppColors.greycolor,
                                       textAlign: TextAlign.start,
@@ -110,7 +122,7 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                     height: 5,
                   ),
                   CommonWidgets().textWidget(
-                      text: tutor.details,
+                      text: details,
                       textSize: 12.0,
                       textColor: AppColors.greycolor,
                       textAlign: TextAlign.start,
@@ -136,18 +148,18 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                             ),
                           ),
                           title: CommonWidgets().textWidget(
-                              text: tutor.collagedegree,
+                              text: collagedegree,
                               textSize: 13.0,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.w500),
                           subtitle: CommonWidgets().textWidget(
-                              text: tutor.university,
+                              text: university,
                               textSize: 12.0,
                               textColor: AppColors.greycolor,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.w500),
                           trailing: CommonWidgets().textWidget(
-                              text: tutor.collageyear,
+                              text: collageyear,
                               textSize: 12.0,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.bold),
@@ -170,18 +182,18 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                             ),
                           ),
                           title: CommonWidgets().textWidget(
-                              text: tutor.schooldegree,
+                              text: schooldegree,
                               textSize: 13.0,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.w500),
                           subtitle: CommonWidgets().textWidget(
-                              text: tutor.schoolname,
+                              text: schoolname,
                               textSize: 12.0,
                               textColor: AppColors.greycolor,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.w500),
                           trailing: CommonWidgets().textWidget(
-                              text: tutor.schoolyear,
+                              text: schoolyear,
                               textSize: 12.0,
                               textAlign: TextAlign.start,
                               textWeight: FontWeight.bold),
@@ -199,25 +211,33 @@ class StudentLiveTutorPersonalDetailsScreen extends StatelessWidget {
                       textAlign: TextAlign.start,
                       textWeight: FontWeight.bold),
                   // Reviews
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: tutor.reviews.length,
-                      itemBuilder: (context, index) {
-                        final review = tutor.reviews[index];
-                        return GestureDetector(
-                          onTap: () {
-                            tutorController.selectTutor(tutor);
-                            Get.to(
-                                () => StudentLiveTutorPersonalDetailsScreen());
-                          },
-                          child: liveTutorWidget(
-                              name: review["name"],
-                              date: review["date"],
-                              feedback: review["feedback"]),
-                        );
-                      },
-                    ),
-                  ),
+                  SizedBox(height: 5),
+                  liveTutorWidget(
+                      name: 'Naomi Klein',
+                      date: '16 Feb 2024',
+                      feedback:
+                          'I wish Robert Fox was my class teacher. His teaching technique is awesome.'),
+                  SizedBox(height: 5),
+                  liveTutorWidget(
+                      name: 'Muhammad Shahin',
+                      date: '16 Feb 2024',
+                      feedback:
+                          'Robert Foxs teaching is outstanding. He makes learning complex topics simple and enjoyable.'),
+
+                  // Expanded(
+                  //   child: ListView.builder(
+                  //     itemCount: tutor.reviews.length,
+                  //     itemBuilder: (context, index) {
+                  //       final review = tutor.reviews[index];
+                  //       return GestureDetector(
+                  //         child: liveTutorWidget(
+                  //             name: review["name"],
+                  //             date: review["date"],
+                  //             feedback: review["feedback"]),
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
                 ],
               ),
             ),

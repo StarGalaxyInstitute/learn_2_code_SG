@@ -11,11 +11,15 @@ import '../Screens/staff_prosesspage.dart';
 
 class StaffAuthcontroller extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController =
+      TextEditingController(text: "admin@gmail.com");
+  final TextEditingController passwordController =
+      TextEditingController(text: "Admin@1234");
   final TextEditingController confirmPasswordController =
-      TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
+      TextEditingController(text: "Admin@1234");
+  final TextEditingController userNameController =
+      TextEditingController(text: "Admins");
+
   var isaccess =
       Preference.preference.getBool(key: PrefernceKey.isaccess, defVal: false);
 

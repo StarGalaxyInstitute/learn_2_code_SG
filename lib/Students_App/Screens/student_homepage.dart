@@ -125,7 +125,13 @@ class StudentHomepage extends StatelessWidget {
                                       allcoureseslistController
                                           .selectTutor(course);
                                       Get.to(() =>
-                                          StudentAllCoursesDetailsScreen());
+                                          StudentAllCoursesDetailsScreen(
+                                              image: course.image,
+                                              title: course.title,
+                                              author: course.author,
+                                              rating: course.rating,
+                                              tag: course.tag,
+                                              details: course.details));
                                     },
                                     child: trendingCourseWidget(
                                       name: course.title,
@@ -172,7 +178,18 @@ class StudentHomepage extends StatelessWidget {
                                     onTap: () {
                                       tutorController.selectTutor(tutor);
                                       Get.to(() =>
-                                          StudentLiveTutorPersonalDetailsScreen());
+                                          StudentLiveTutorPersonalDetailsScreen(
+                                            name: tutor.name,
+                                            university: tutor.university,
+                                            rating: tutor.rating,
+                                            reviewscount: tutor.reviewscount,
+                                            details: tutor.details,
+                                            collagedegree: tutor.collagedegree,
+                                            collageyear: tutor.collageyear,
+                                            schooldegree: tutor.schooldegree,
+                                            schoolname: tutor.schoolname,
+                                            schoolyear: tutor.schoolyear,
+                                          ));
                                     },
                                     child: topLiveTutor(
                                         name: tutor.name,
@@ -218,7 +235,13 @@ class StudentHomepage extends StatelessWidget {
                                       allcoureseslistController
                                           .selectTutor(course);
                                       Get.to(() =>
-                                          StudentAllCoursesDetailsScreen());
+                                          StudentAllCoursesDetailsScreen(
+                                              image: course.image,
+                                              title: course.title,
+                                              author: course.author,
+                                              rating: course.rating,
+                                              tag: course.tag,
+                                              details: course.details));
                                     },
                                     child: trendingCourseWidget(
                                       name: course.title,
