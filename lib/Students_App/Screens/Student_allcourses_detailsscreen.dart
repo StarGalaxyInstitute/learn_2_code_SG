@@ -1,15 +1,10 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print
-import 'dart:math';
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, must_be_immutable
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
-import 'package:flutter_carousel_intro/slider_item_model.dart';
-import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:learn_to_code/Constrant/utilities.dart';
 import 'package:learn_to_code/Students_App/Controllers/student_allcoureseslist_controller.dart';
-import 'package:learn_to_code/Students_App/Helpers/student_coures.dart';
 import '../../Constrant/common_widgets.dart';
 
 final StudentAllcoureseslistController controller =
@@ -47,9 +42,6 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
               onPressed: () {
                 if (controller.selectedTutor.value != null) {
                   controller.toggleFavorite(controller.selectedTutor.value!);
-                  controller.favoriteCourses.value =
-                      controller.courses.where((c) => c.isFavorite).toList();
-                  controller.loadFavorites();
                 }
               },
             ),
@@ -65,7 +57,7 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
             textWeight: FontWeight.bold),
       ),
       body: Obx(() {
-        return controller.selectedTutor.value == null
+        return title.isEmpty
             ? Center(
                 child: CommonWidgets().textWidget(
                     text: "No Courses selected",
@@ -75,7 +67,7 @@ class StudentAllCoursesDetailsScreen extends StatelessWidget {
               )
             : SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

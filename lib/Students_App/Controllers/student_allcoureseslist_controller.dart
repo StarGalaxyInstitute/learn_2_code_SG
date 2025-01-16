@@ -135,19 +135,6 @@ class StudentAllcoureseslistController extends GetxController {
             'The Advanced Front-End Programming course sharpens students critical thinking, creativity, and analytical skills, empowering them to effectively tackle complex challenges in web development.'),
   ].obs;
 
-  // Future<void> loadFavorites() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String? favoritesData = prefs.getString('favoriteCourses');
-  //   if (favoritesData != null) {
-  //     List<dynamic> jsonList = jsonDecode(favoritesData);
-  //     for (var course in courses) {
-  //       course.isFavorite =jsonList.any((item) => item['title'] == course.title);
-  //     }
-  //   }
-  //   favoriteCourses.value = courses.where((c) => c.isFavorite).toList();
-  //   update();
-  // }
-
   Future<void> loadFavorites() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? favoritesData = prefs.getString('favoriteCourses');
@@ -162,12 +149,6 @@ class StudentAllcoureseslistController extends GetxController {
     update();
   }
 
-  // Future<void> saveFavorites() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   List<Map<String, dynamic>> favorites = courses.where((course) => course.isFavorite).map((course) => course.toJson()).toList();
-  //   prefs.setString('favoriteCourses', jsonEncode(favorites));
-  // }
-
   Future<void> saveFavorites() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Map<String, dynamic>> favorites = courses
@@ -176,12 +157,6 @@ class StudentAllcoureseslistController extends GetxController {
         .toList();
     prefs.setString('favoriteCourses', jsonEncode(favorites));
   }
-
-  // void toggleFavorite(StudentCoures course) {
-  //   course.isFavorite = !course.isFavorite;
-  //   favoriteCourses.value = courses.where((c) => c.isFavorite).toList();
-  //   saveFavorites();
-  // }
 
   void toggleFavorite(StudentCoures course) {
     course.isFavorite = !course.isFavorite;
